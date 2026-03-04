@@ -1,59 +1,18 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  console.log('[signup] POST hit', {
-    vercelEnv: process.env.VERCEL_ENV ?? 'local',
-    vercelUrl: process.env.VERCEL_URL ?? 'local',
-    nodeEnv: process.env.NODE_ENV ?? 'unknown',
-    hasResendKey: !!process.env.RESEND_API_KEY,
-    resendKeyLength: process.env.RESEND_API_KEY?.length ?? 0,
-  });
-
   try {
-    if (!process.env.RESEND_API_KEY) {
-      console.error('[signup] Missing RESEND_API_KEY', {
-        vercelEnv: process.env.VERCEL_ENV ?? 'local',
-        vercelUrl: process.env.VERCEL_URL ?? 'local',
-      });
-
-      return NextResponse.json(
-        {
-          error: 'Missing RESEND_API_KEY',
-          env: process.env.VERCEL_ENV ?? 'local',
-        },
-        { status: 500 }
-      );
-    }
-
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    console.log('[signup] Resend client initialized');
-
-    let body;
-    try {
-      body = await request.json();
-      console.log('[signup] Request body parsed', {
-        hasName: !!body?.name,
-        hasEmail: !!body?.email,
-      });
-    } catch (parseError) {
-      console.error('[signup] Failed to parse request body', parseError);
-      return NextResponse.json(
-        { error: 'Invalid request body' },
-        { status: 400 }
-      );
-    }
-
+    const body = await request.json();
     const { name, email } = body;
 
+    // validation
     if (!name || !email) {
-      console.warn('[signup] Validation failed: missing name or email', {
-        name,
-        email,
-      });
-
       return NextResponse.json(
         { error: 'Name and email are required' },
         { status: 400 }
@@ -61,10 +20,6 @@ export async function POST(request: Request) {
     }
 
     if (name.trim().length < 2) {
-      console.warn('[signup] Validation failed: name too short', {
-        trimmedNameLength: name.trim().length,
-      });
-
       return NextResponse.json(
         { error: 'Name must be at least 2 characters' },
         { status: 400 }
@@ -72,99 +27,62 @@ export async function POST(request: Request) {
     }
 
     if (!emailRegex.test(email)) {
-      console.warn('[signup] Validation failed: invalid email', {
-        email,
-      });
-
       return NextResponse.json(
         { error: 'Please enter a valid email address' },
         { status: 400 }
       );
     }
 
+    // normalize email
     const normalizedEmail = email.trim().toLowerCase();
     const trimmedName = name.trim();
 
-    console.log('[signup] Validation passed', {
-      normalizedEmail,
-      trimmedName,
-    });
-
+    // check if contact already exists
     let existingContact = null;
-
     try {
-      console.log('[signup] Checking existing contacts...');
       const contacts = await resend.contacts.list();
-
-      console.log('[signup] contacts.list() response summary', {
-        hasData: !!contacts?.data,
-        nestedHasData: !!contacts?.data?.data,
-        contactCount: Array.isArray(contacts?.data?.data)
-          ? contacts.data.data.length
-          : null,
-        error: contacts?.error ?? null,
-      });
-
+      
+      // The response structure is { data: { data: [...contacts] } }
       const contactsArray = contacts.data?.data;
-
+      
       if (Array.isArray(contactsArray)) {
         existingContact = contactsArray.find(
-          (contact: { email: string }) =>
-            contact.email.toLowerCase() === normalizedEmail
+          (contact: { email: string }) => contact.email.toLowerCase() === normalizedEmail
         );
       }
-
-      console.log('[signup] Existing contact lookup done', {
-        foundExistingContact: !!existingContact,
-      });
     } catch (err) {
-      console.error('[signup] Error checking contacts:', err);
+      console.error('Error checking contacts:', err);
       existingContact = null;
     }
 
     if (existingContact) {
-      console.log('[signup] Contact already exists, skipping create/send', {
-        normalizedEmail,
-      });
-
+      // contact exists - skip sending email again
+      // console.log(`Contact ${normalizedEmail} already exists, skipping welcome email`);
       return NextResponse.json(
         { success: true, existing: true, message: 'You are already signed up!' },
         { status: 200 }
       );
     }
 
-    console.log('[signup] Creating contact...', { normalizedEmail });
-
-    const createResult = await resend.contacts.create({
+    // create new contact
+    const { error: createError } = await resend.contacts.create({
       email: normalizedEmail,
       firstName: trimmedName.split(' ')[0],
       lastName: trimmedName.split(' ').slice(1).join(' ') || undefined,
     });
 
-    console.log('[signup] contacts.create() result', {
-      data: createResult?.data ?? null,
-      error: createResult?.error ?? null,
-    });
-
-    const { error: createError } = createResult;
-
     if (createError) {
-      console.error('[signup] Failed to create contact:', createError);
-
+      console.error('Failed to create contact:', createError);
       return NextResponse.json(
         { error: 'Failed to create contact. Please try again later.' },
         { status: 500 }
       );
     }
 
-    console.log('[signup] Contact created successfully', { normalizedEmail });
+    // console.log(`Created new contact: ${normalizedEmail}`);
 
-    console.log('[signup] Sending welcome email...', {
-      from: 'Institute for Algorithm Mining <noreply@algomining.org>',
-      to: normalizedEmail,
-    });
-
-    const emailResult = await resend.emails.send({
+    // send welcome email
+    const { error: emailError } = await resend.emails.send({
       from: 'Institute for Algorithm Mining <noreply@algomining.org>',
       to: normalizedEmail,
       subject: 'Welcome to the Institute for Algorithm Mining',
@@ -181,6 +99,7 @@ export async function POST(request: Request) {
               <tr>
                 <td align="center" style="padding: 40px 20px;">
                   <table width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <!-- Header -->
                     <tr>
                       <td style="padding: 40px 40px 20px 40px; text-align: center; border-bottom: 1px solid #e7e5e4;">
                         <h1 style="margin: 0 0 12px 0; font-size: 32px; font-weight: 400; color: #1c1917; letter-spacing: -0.025em; line-height: 1.1;">
@@ -231,33 +150,21 @@ export async function POST(request: Request) {
       `,
     });
 
-    console.log('[signup] emails.send() result', {
-      data: emailResult?.data ?? null,
-      error: emailResult?.error ?? null,
-    });
-
-    const { error: emailError } = emailResult;
-
     if (emailError) {
-      console.error('[signup] Resend email error:', emailError);
-
+      console.error('Resend email error:', emailError);
+      // contact was created but email failed - still return success
       return NextResponse.json(
         { success: true, message: 'Signup successful!' },
         { status: 200 }
       );
     }
 
-    console.log('[signup] Signup flow completed successfully', {
-      normalizedEmail,
-    });
-
     return NextResponse.json(
       { success: true, message: 'Signup successful! Check your email for confirmation.' },
       { status: 200 }
     );
   } catch (error) {
-    console.error('[signup] Unhandled signup error:', error);
-
+    console.error('Signup error:', error);
     return NextResponse.json(
       { error: 'An unexpected error occurred. Please try again.' },
       { status: 500 }
