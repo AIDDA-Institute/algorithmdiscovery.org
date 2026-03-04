@@ -91,7 +91,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               onClick={onOpenSignup}
               className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-6 text-sm font-normal transition-colors"
             >
-              Apply
+              Get Involved
             </Button>
             {/* <button className="p-2.5 rounded-full bg-stone-900 text-white hover:bg-stone-800 transition-colors">
               <Search className="h-4 w-4" />
