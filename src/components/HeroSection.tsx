@@ -36,13 +36,17 @@ export function HeroSection({ onOpenSignup }: HeroSectionProps) {
                 >
                   Get Involved
                 </Button>
-                {/* <Button
+                <Button
                   variant="outline"
-                  className="rounded-full px-6 py-6 text-base font-normal border-stone-300 text-stone-700 hover:bg-stone-50 transition-colors"
+                  asChild
+                  className="rounded-full px-6 py-6 text-base font-normal border-stone-300 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors"
                 >
-                  <FileText className="h-4 w-4 mr-2" />
-                  Program PDF
-                </Button> */}
+                  <a href="/whitepaper.pdf" target="_blank" rel="noopener noreferrer">
+                    <FileText className="h-4 w-4 mr-2 flex-shrink-0" />
+                    <span className="hidden sm:inline">Algorithm Mining: The Economics of Automated Algorithm Discovery</span>
+                    <span className="sm:hidden">Whitepaper</span>
+                  </a>
+                </Button>
               </div>
             </FadeIn>
             

@@ -1,14 +1,34 @@
 import type { MetadataRoute } from "next";
+import { getAllEvents } from "@/data/events";
 
 const SITE_URL = "https://algomining.org/";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const events = getAllEvents();
+
+  // base routes
+  const routes: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${SITE_URL}events`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
   ];
+
+  // events pages
+  const eventRoutes = events.map((event) => ({
+    url: `${SITE_URL}events/${event.id}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...routes, ...eventRoutes];
 }

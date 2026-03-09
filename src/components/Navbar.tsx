@@ -1,8 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X } from "lucide-react";
+import { Search, Menu, X, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 
 const navLinks = [
@@ -13,6 +14,10 @@ const navLinks = [
     // { label: "Insights", href: "#insights" },
   { label: "Committee", href: "#committee" },
   // { label: "Apply", href: "#apply" },
+];
+
+const pageLinks = [
+  { label: "Events", href: "/events" },
 ];
 
 interface NavbarProps {
@@ -83,6 +88,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
                 {link.label}
               </button>
             ))}
+            <Link
+              href="/events"
+              className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
+            >
+              <Calendar className="h-3.5 w-3.5" />
+              Events
+            </Link>
           </div>
 
           {/* Right side buttons */}
@@ -125,6 +137,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
                 {link.label}
               </button>
             ))}
+            <Link
+              href="/events"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
+            >
+              Events
+            </Link>
           </div>
         </div>
       )}
