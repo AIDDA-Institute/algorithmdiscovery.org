@@ -1,9 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X, Calendar } from "lucide-react";
+import { Search, Menu, X, Calendar, Linkedin } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { siX, siTelegram } from "simple-icons";
 
 
 const navLinks = [
@@ -99,6 +100,50 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
 
           {/* Right side buttons */}
           <div className="flex items-center space-x-3">
+            {/* Social Icons - Desktop */}
+            <div className="hidden md:flex items-center gap-3 mr-2">
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-400 hover:text-stone-700 transition-colors"
+                aria-label="X"
+              >
+                <svg
+                  role="img"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5 fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d={siX.path} />
+                </svg>
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-400 hover:text-stone-700 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a
+                href="https://telegram.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-400 hover:text-stone-700 transition-colors"
+                aria-label="Telegram"
+              >
+                <svg
+                  role="img"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5 fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d={siTelegram.path} />
+                </svg>
+              </a>
+            </div>
             <Button
               onClick={onOpenSignup}
               className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-6 text-sm font-normal transition-colors"

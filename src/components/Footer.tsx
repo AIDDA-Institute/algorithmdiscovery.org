@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Github, MessageCircle, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import { siX, siTelegram } from "simple-icons";
 
 interface FooterProps {
   onOpenSignup: () => void;
@@ -63,45 +64,49 @@ export function Footer({ onOpenSignup }: FooterProps) {
               </a>
             </div>
 
-            {/* <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
               <a
-                href="https://github.com"
+                href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-stone-400 hover:text-white transition-colors"
-                aria-label="GitHub"
+                aria-label="X"
               >
-                <Github className="h-5 w-5" />
+                <svg
+                  role="img"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5 fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d={siX.path} />
+                </svg>
               </a>
               <a
-                href="#"
-                className="text-stone-400 hover:text-white transition-colors"
-                aria-label="Discord"
-              >
-                <MessageCircle className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="text-stone-400 hover:text-white transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-stone-400 hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://telegram.org"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-stone-400 hover:text-white transition-colors"
-                aria-label="YouTube"
+                aria-label="Telegram"
               >
-                <Youtube className="h-5 w-5" />
+                <svg
+                  role="img"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5 fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d={siTelegram.path} />
+                </svg>
               </a>
-            </div> */}
+            </div>
           </div>
         </FadeIn>
       </div>

@@ -1,9 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Github, MessageCircle, FileText } from "lucide-react";
+import { Github, MessageCircle, FileText, Linkedin } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { ParticleAnimation } from "@/components/ParticleAnimation";
+import { siX, siTelegram } from "simple-icons";
 
 interface HeroSectionProps {
   onOpenSignup: () => void;
@@ -36,7 +37,7 @@ export function HeroSection({ onOpenSignup }: HeroSectionProps) {
                 >
                   Get Involved
                 </Button>
-                <Button
+                {/* <Button
                   variant="outline"
                   asChild
                   className="rounded-full px-6 py-6 text-base font-normal border-stone-300 text-stone-700 hover:bg-stone-50 hover:text-stone-900 transition-colors"
@@ -46,35 +47,60 @@ export function HeroSection({ onOpenSignup }: HeroSectionProps) {
                     <span className="hidden sm:inline">Algorithm Mining: The Economics of Automated Algorithm Discovery</span>
                     <span className="sm:hidden">Whitepaper</span>
                   </a>
-                </Button>
+                </Button> */}
               </div>
             </FadeIn>
             
-            {/* <FadeIn delay={0.4} duration={0.6}>
+            <FadeIn delay={0.4} duration={0.6}>
               <div className="pt-6">
                 <p className="text-xs font-normal tracking-widest text-stone-500 uppercase mb-4">
                   Connect with us
                 </p>
                 <div className="flex items-center gap-4">
                   <a
-                    href="https://github.com"
+                    href="https://x.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-stone-400 hover:text-stone-700 transition-colors"
-                    aria-label="GitHub"
+                    aria-label="X"
                   >
-                    <Github className="h-6 w-6" />
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      className="h-6 w-6 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d={siX.path} />
+                    </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-stone-400 hover:text-stone-700 transition-colors"
-                    aria-label="Discord"
+                    aria-label="LinkedIn"
                   >
-                    <MessageCircle className="h-6 w-6" />
+                    <Linkedin className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://telegram.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-stone-400 hover:text-stone-700 transition-colors"
+                    aria-label="Telegram"
+                  >
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      className="h-6 w-6 fill-current"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d={siTelegram.path} />
+                    </svg>
                   </a>
                 </div>
               </div>
-            </FadeIn> */}
+            </FadeIn>
           </div>
         </div>
         
