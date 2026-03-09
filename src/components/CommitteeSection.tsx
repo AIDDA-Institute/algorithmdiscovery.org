@@ -41,10 +41,10 @@ export function CommitteeSection() {
           <p className="text-stone-600 mb-12 font-normal">
             The Institute for Algorithm Mining is seeking additional committee members. If you would like to get involved, reach out to us at{" "}
             <a
-              href="mailto:committee@algomining.org"
+              href="mailto:committee@algorithmdiscovery.org"
               className="text-stone-900 underline underline-offset-2 hover:text-stone-700"
             >
-              committee@algomining.org
+              committee@algorithmdiscovery.org
             </a>
             .
           </p>
