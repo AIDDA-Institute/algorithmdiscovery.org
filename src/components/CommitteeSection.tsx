@@ -12,7 +12,7 @@ const committeeMembers = [
   },
   {
     name: "Henrique Assumpção",
-    email: "henrique.soares@inter.co",
+    email: "henriquesoares@dcc.ufmg.br",
     bio: "Henrique Assumpção is a Machine Learning Researcher at Inter and a Master's student in Computer Science at Universidade Federal de Minas Gerais (UFMG). He holds a BSc in Computer Science from UFMG, with a minor in Pure Mathematics. He is the lead developer of CodeEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research spans representation learning, language models, and algebraic graph theory.",
   },
 //   {
