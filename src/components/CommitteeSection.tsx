@@ -15,16 +15,16 @@ const committeeMembers = [
     email: "henriquesoares@dcc.ufmg.br",
     bio: "Henrique Assumpção is a Machine Learning Researcher at Inter and a Master's student in Computer Science at Universidade Federal de Minas Gerais (UFMG). He holds a BSc in Computer Science from UFMG, with a minor in Pure Mathematics. He is the lead developer of CodeEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research spans representation learning, language models, and algebraic graph theory.",
   },
-//   {
-//     name: "Prof. Michael Rodriguez",
-//     email: "m.rodriguez@algorithm-mining.org",
-//     bio: "Prof. Michael Rodriguez is an Associate Professor at Stanford University's Computer Science department, specializing in systems for machine learning. He holds a Ph.D. from UC Berkeley and has published extensively on distributed training and model parallelism. He previously led ML infrastructure teams at Meta.",
-//   },
-//   {
-//     name: "Dr. Aisha Patel",
-//     email: "aisha.patel@algorithm-mining.org",
-//     bio: "Dr. Aisha Patel is a Principal Researcher at Microsoft Research, Redmond, where she works on neural architecture search and automated ML systems. She completed her Ph.D. at Carnegie Mellon University and has been instrumental in developing efficiency benchmarks for the ML community.",
-//   },
+  //   {
+  //     name: "Prof. Michael Rodriguez",
+  //     email: "m.rodriguez@algorithmdiscovery.org",
+  //     bio: "Prof. Michael Rodriguez is an Associate Professor at Stanford University's Computer Science department, specializing in systems for machine learning. He holds a Ph.D. from UC Berkeley and has published extensively on distributed training and model parallelism. He previously led ML infrastructure teams at Meta.",
+  //   },
+  //   {
+  //     name: "Dr. Aisha Patel",
+  //     email: "aisha.patel@algorithmdiscovery.org",
+  //     bio: "Dr. Aisha Patel is a Principal Researcher at Microsoft Research, Redmond, where she works on neural architecture search and automated ML systems. She completed her Ph.D. at Carnegie Mellon University and has been instrumental in developing efficiency benchmarks for the ML community.",
+  //   },
 ];
 
 export function CommitteeSection() {
@@ -36,10 +36,10 @@ export function CommitteeSection() {
             Committee Members
           </h2>
         </FadeIn>
-        
+
         <FadeIn delay={0.1}>
           <p className="text-stone-600 mb-12 font-normal">
-            The Institute for Algorithm Mining is seeking additional committee members. If you would like to get involved, reach out to us at{" "}
+            The AIDDA Institute is seeking additional committee members. If you would like to get involved, reach out to us at{" "}
             <a
               href="mailto:committee@algorithmdiscovery.org"
               className="text-stone-900 underline underline-offset-2 hover:text-stone-700"
@@ -77,7 +77,7 @@ export function CommitteeSection() {
                         </a>
                       </div>
                     </div>
-                    
+
                     {/* Bio column */}
                     <div className="md:col-span-2">
                       <p className="text-stone-700 leading-relaxed font-normal">

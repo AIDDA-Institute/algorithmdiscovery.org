@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://algomining.org/";
+const SITE_URL = "https://algorithmdiscovery.org/";
 
 export default function robots(): MetadataRoute.Robots {
   return {

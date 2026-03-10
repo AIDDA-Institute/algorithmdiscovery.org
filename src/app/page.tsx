@@ -23,12 +23,12 @@ export default function Home() {
       <PurposeSection onOpenSignup={() => setIsSignupOpen(true)} />
       {/* <ProgramTracksSection /> */}
       {/* <PublicationsSection /> */}
-      <MeetingScheduleSection />
+      <MeetingScheduleSection onOpenSignup={() => setIsSignupOpen(true)} />
       {/* <InsightsSection /> */}
       <CommitteeSection />
       {/* <ApplyCTASection /> */}
       <Footer onOpenSignup={() => setIsSignupOpen(true)} />
-      
+
       {/* Global Signup Popup */}
       <SignupPopup isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
     </main>

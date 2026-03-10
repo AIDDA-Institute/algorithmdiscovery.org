@@ -1,1 +1,1 @@
-# algomining.org
+# algorithmdiscovery.org

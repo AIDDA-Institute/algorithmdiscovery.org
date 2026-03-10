@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllEvents } from "@/data/events";
 
-const SITE_URL = "https://algomining.org/";
+const SITE_URL = "https://algorithmdiscovery.org/";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const events = getAllEvents();

@@ -9,7 +9,7 @@ export function ApplyCTASection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <FadeIn>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900 tracking-tight mb-4">
-            Join the Institute for Algorithm Mining
+            Join the AIDDA Institute
           </h2>
         </FadeIn>
         <FadeIn delay={0.1}>
@@ -17,7 +17,7 @@ export function ApplyCTASection() {
             Applications are open for the 2026 cohort. Help shape the future of efficient machine learning.
           </p>
         </FadeIn>
-        
+
         <FadeIn delay={0.2}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button

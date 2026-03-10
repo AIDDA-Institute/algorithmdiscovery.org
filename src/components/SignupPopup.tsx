@@ -142,7 +142,7 @@ export function SignupPopup({ isOpen, onClose }: SignupPopupProps) {
             ) : (
               <>
                 <p className="text-stone-600 mb-6">
-                  Join the Institute for Algorithm Mining. Enter your details below and we&apos;ll keep you updated on events, research, and opportunities.
+                  Join the AIDDA Institute. Enter your details below and we&apos;ll keep you updated on events, research, and opportunities.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -205,7 +205,7 @@ export function SignupPopup({ isOpen, onClose }: SignupPopupProps) {
                 </form>
 
                 <p className="text-xs text-stone-400 text-center mt-4">
-                  By signing up, you agree to receive updates from the Institute for Algorithm Mining.
+                  By signing up, you agree to receive updates from the AIDDA Institute.
                 </p>
               </>
             )}

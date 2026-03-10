@@ -43,7 +43,7 @@ export function PurposeSection({ onOpenSignup }: PurposeSectionProps) {
                 Recent breakthroughs in AI-driven algorithm discovery - including AlphaEvolve, CodeEvolve, OpenEvolve, and ShinkaEvolve - have shown that AI systems can outperform decades of human effort. From breaking a 56-year-old record in matrix multiplication to achieving 5× speedups on systems research problems, these advances signal a future where AI-driven methods will be a key part of algorithmic discovery.
               </p>
               <p className="text-base md:text-lg text-stone-700 leading-relaxed font-normal">
-                The Institute for Algorithm Mining accelerates this transition by building a global community that fosters collaboration and knowledge sharing:
+                The AIDDA Institute accelerates this transition by building a global community that fosters collaboration and knowledge sharing:
               </p>
             </div>
 

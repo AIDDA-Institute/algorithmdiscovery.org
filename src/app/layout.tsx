@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Instrument_Sans, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
-const SITE_NAME = "Institute for Algorithm Mining";
-const SITE_URL = "https://algomining.org/";
+const SITE_NAME = "AIDDA Institute";
+const SITE_URL = "https://algorithmdiscovery.org/";
 const SITE_DESC =
   "Coordinating research, knowledge sharing, and networking around AI-driven algorithm discovery.";
 

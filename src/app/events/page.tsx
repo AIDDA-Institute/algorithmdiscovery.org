@@ -17,11 +17,12 @@ import {
   getUpcomingEvents,
   getPastEvents,
 } from "@/data/events";
+import { EventCard } from "@/components/EventCard";
 
 export const metadata: Metadata = {
   title: "Events Calendar",
   description:
-    "Join our conference, reading groups, technical discussions, speaker events, and community gatherings at the Institute for Algorithm Mining.",
+    "Join our conference, reading groups, technical discussions, speaker events, and community gatherings at the AIDDA Institute.",
 };
 
 export default function EventsPage() {
@@ -51,7 +52,7 @@ export default function EventsPage() {
               <p className="text-lg sm:text-xl text-stone-400 font-normal leading-relaxed">
                 Join our conference, reading groups, technical discussions,
                 speaker events, and community gatherings. Connect with
-                researchers and practitioners in algorithm mining.
+                researchers and practitioners in AI Driven Discovery of Algorithms.
               </p>
             </div>
           </FadeIn>
@@ -107,116 +108,11 @@ export default function EventsPage() {
               staggerDelay={0.1}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {upcomingEvents.map((event) => {
-                const colors = colorMap[event.color];
-                const Icon = event.icon;
-                const isTBD =
-                  event.date.includes("[TBC]") ||
-                  event.date.includes("TBD") ||
-                  event.time.includes("[TBC]") ||
-                  event.time.includes("TBD");
-
-                return (
-                  <StaggerItem key={event.id} className="h-full">
-                    <Card className="bg-slate-800/50 border-stone-700/50 hover:border-stone-500 transition-all duration-300 h-full flex flex-col">
-                      <CardContent className="p-6 flex flex-col h-full">
-                        {/* Event Type Badge */}
-                        <div className="flex items-center justify-between mb-4">
-                          <div
-                            className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${colors.lightBg} border ${colors.border}`}
-                          >
-                            <Icon className={`h-3.5 w-3.5 ${colors.text}`} />
-                            <span
-                              className={`text-xs font-normal ${colors.text}`}
-                            >
-                              {event.type}
-                            </span>
-                          </div>
-                          <span className="text-xs text-emerald-400 font-normal">
-                            Upcoming
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <Link href={`/events/${event.id}`}>
-                          <h3 className="text-xl font-normal text-white mb-3 hover:text-emerald-400 transition-colors cursor-pointer">
-                            {event.title}
-                          </h3>
-                        </Link>
-
-                        {/* Description */}
-                        <p className="text-sm text-stone-400 mb-4 line-clamp-3 font-normal flex-grow">
-                          {event.description}
-                        </p>
-
-                        {/* Date & Time */}
-                        <div className="space-y-2 pt-4 border-t border-stone-700/50 mb-4">
-                          <div className="flex items-center gap-2 text-sm text-stone-300">
-                            <Calendar className="h-4 w-4 text-stone-500" />
-                            <span className="font-normal">{event.date}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-stone-400">
-                            <Clock className="h-4 w-4 text-stone-500" />
-                            <span className="font-normal">{event.time}</span>
-                          </div>
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex flex-col gap-2 mt-auto">
-                          <Link href={`/events/${event.id}`} className="w-full">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="w-full rounded-full border-stone-600 bg-transparent text-white hover:bg-stone-800 hover:text-white transition-colors text-xs font-normal"
-                            >
-                              View Details
-                              <ArrowRight className="h-3 w-3 ml-1" />
-                            </Button>
-                          </Link>
-
-                          {event.notionUrl && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              asChild
-                              className="w-full rounded-full border-stone-600 bg-transparent text-stone-300 hover:bg-stone-800 hover:text-white transition-colors text-xs font-normal"
-                            >
-                              <a
-                                href={event.notionUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <FileText className="h-3 w-3 mr-1" />
-                                View on Notion
-                                <ExternalLink className="h-3 w-3 ml-1" />
-                              </a>
-                            </Button>
-                          )}
-
-                          {!isTBD && event.calendarUrl && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              asChild
-                              className="w-full rounded-full border-stone-600 bg-transparent text-stone-300 hover:bg-stone-800 hover:text-white transition-colors text-xs font-normal"
-                            >
-                              <a
-                                href={event.calendarUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <Calendar className="h-3 w-3 mr-1" />
-                                Add to Calendar
-                                <ExternalLink className="h-3 w-3 ml-1" />
-                              </a>
-                            </Button>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </StaggerItem>
-                );
-              })}
+              {upcomingEvents.map((event) => (
+                <StaggerItem key={event.id} className="h-full">
+                  <EventCard event={event} />
+                </StaggerItem>
+              ))}
             </StaggerContainer>
           ) : (
             <FadeIn delay={0.25}>
@@ -252,50 +148,11 @@ export default function EventsPage() {
               staggerDelay={0.08}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {pastEvents.map((event) => {
-                const colors = colorMap[event.color];
-                const Icon = event.icon;
-                return (
-                  <StaggerItem key={event.id} className="h-full">
-                    <Card className="bg-slate-800/30 border-stone-700/30 h-full hover:border-stone-600/50 transition-all duration-300 opacity-70 hover:opacity-100">
-                      <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-4">
-                          <div
-                            className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${colors.lightBg} border ${colors.border}`}
-                          >
-                            <Icon className={`h-3.5 w-3.5 ${colors.text}`} />
-                            <span
-                              className={`text-xs font-normal ${colors.text}`}
-                            >
-                              {event.type}
-                            </span>
-                          </div>
-                          <span className="text-xs text-stone-500 font-normal">
-                            Completed
-                          </span>
-                        </div>
-
-                        <Link href={`/events/${event.id}`}>
-                          <h3 className="text-lg font-normal text-stone-300 mb-2 hover:text-emerald-400 transition-colors cursor-pointer">
-                            {event.title}
-                          </h3>
-                        </Link>
-
-                        <p className="text-sm text-stone-500 mb-4 line-clamp-2 font-normal">
-                          {event.description}
-                        </p>
-
-                        <div className="space-y-2 pt-4 border-t border-stone-700/30">
-                          <div className="flex items-center gap-2 text-sm text-stone-400">
-                            <Calendar className="h-4 w-4 text-stone-600" />
-                            <span className="font-normal">{event.date}</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </StaggerItem>
-                );
-              })}
+              {pastEvents.map((event) => (
+                <StaggerItem key={event.id} className="h-full">
+                  <EventCard event={event} isPast />
+                </StaggerItem>
+              ))}
             </StaggerContainer>
           </div>
         </section>
@@ -331,7 +188,7 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-sm text-stone-500">
-              &copy; 2026 Institute for Algorithm Mining
+              &copy; 2026 AIDDA Institute
             </div>
             <Link
               href="/"

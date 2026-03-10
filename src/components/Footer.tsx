@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Linkedin } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
-import { siX, siTelegram } from "simple-icons";
+import { siX } from "simple-icons";
 
 interface FooterProps {
   onOpenSignup: () => void;
@@ -20,10 +20,10 @@ export function Footer({ onOpenSignup }: FooterProps) {
             <div>
               <div className="mb-4">
                 <span className="text-2xl font-normal tracking-tight">
-                  Institute for
+                  AIDDA
                 </span>
                 <span className="text-2xl font-light text-stone-400 ml-1">
-                  Algorithm Mining
+                  Institute
                 </span>
               </div>
               <p className="text-stone-400 text-sm font-normal">
@@ -55,7 +55,7 @@ export function Footer({ onOpenSignup }: FooterProps) {
         <FadeIn delay={0.2}>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex flex-wrap items-center gap-4 text-xs text-stone-500 font-normal">
-              <span>&copy; 2026 Institute for Algorithm Mining</span>
+              <span>&copy; 2026 AIDDA Institute</span>
               <a href="#" className="hover:text-stone-300 underline underline-offset-2">
                 Privacy Policy
               </a>
@@ -66,7 +66,7 @@ export function Footer({ onOpenSignup }: FooterProps) {
 
             <div className="flex items-center gap-4">
               <a
-                href="https://x.com"
+                href="https://x.com/AIDDA_Institute"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-stone-400 hover:text-white transition-colors"
@@ -90,22 +90,7 @@ export function Footer({ onOpenSignup }: FooterProps) {
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a
-                href="https://telegram.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stone-400 hover:text-white transition-colors"
-                aria-label="Telegram"
-              >
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5 fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d={siTelegram.path} />
-                </svg>
-              </a>
+
             </div>
           </div>
         </FadeIn>

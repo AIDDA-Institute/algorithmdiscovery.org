@@ -171,11 +171,10 @@ export default async function EventPage({ params }: EventPageProps) {
                     <div>
                       <p className="text-sm text-stone-500 mb-1">Status</p>
                       <p
-                        className={`font-normal ${
-                          event.status === "upcoming"
+                        className={`font-normal ${event.status === "upcoming"
                             ? "text-emerald-400"
                             : "text-stone-400"
-                        }`}
+                          }`}
                       >
                         {event.status === "upcoming"
                           ? "Registration Open"
@@ -363,7 +362,7 @@ export default async function EventPage({ params }: EventPageProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-sm text-stone-500">
-              &copy; 2026 Institute for Algorithm Mining
+              &copy; 2026 AIDDA Institute
             </div>
             <Link
               href="/"

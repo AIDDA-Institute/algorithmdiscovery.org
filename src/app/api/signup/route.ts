@@ -41,10 +41,10 @@ export async function POST(request: Request) {
     let existingContact = null;
     try {
       const contacts = await resend.contacts.list();
-      
+
       // The response structure is { data: { data: [...contacts] } }
       const contactsArray = contacts.data?.data;
-      
+
       if (Array.isArray(contactsArray)) {
         existingContact = contactsArray.find(
           (contact: { email: string }) => contact.email.toLowerCase() === normalizedEmail
@@ -83,16 +83,16 @@ export async function POST(request: Request) {
 
     // send welcome email
     const { error: emailError } = await resend.emails.send({
-      from: 'Institute for Algorithm Mining <noreply@algomining.org>',
+      from: 'AIDDA Institute <noreply@algorithmdiscovery.org>',
       to: normalizedEmail,
-      subject: 'Welcome to the Institute for Algorithm Mining',
+      subject: 'Welcome to the AIDDA Institute',
       html: `
         <!DOCTYPE html>
         <html>
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Welcome to Institute for Algorithm Mining</title>
+            <title>Welcome to the AIDDA Institute</title>
           </head>
           <body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #fafaf9;">
             <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #fafaf9;">
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
                     <tr>
                       <td style="padding: 40px 40px 20px 40px; text-align: center; border-bottom: 1px solid #e7e5e4;">
                         <h1 style="margin: 0 0 12px 0; font-size: 32px; font-weight: 400; color: #1c1917; letter-spacing: -0.025em; line-height: 1.1;">
-                          Institute for <span style="font-weight: 300; color: #a8a29e;">Algorithm Mining</span>
+                          AIDDA <span style="font-weight: 300; color: #a8a29e;">Institute</span>
                         </h1>
                         <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #78716c;">
                           Coordinating research, knowledge sharing, and networking around AI-driven algorithm discovery.
@@ -116,7 +116,7 @@ export async function POST(request: Request) {
                           Welcome, ${trimmedName}!
                         </h2>
                         <p style="margin: 0 0 20px 0; font-size: 16px; line-height: 1.6; color: #44403c;">
-                          Thank you for your interest in the Institute for Algorithm Mining. We've received your signup and will reach out to you soon with more information about upcoming events, research opportunities, and ways to get involved.
+                          Thank you for your interest in the AIDDA Institute. We've received your signup and will reach out to you soon with more information about upcoming events, research opportunities, and ways to get involved.
                         </p>
                         <p style="margin: 0 0 20px 0; font-size: 16px; line-height: 1.6; color: #44403c;">
                           In the meantime, feel free to explore our website and follow us on our social channels for the latest updates.
@@ -130,7 +130,7 @@ export async function POST(request: Request) {
                         </div>
                         <p style="margin: 0; font-size: 14px; color: #78716c;">
                           Best regards,<br>
-                          The Institute for Algorithm Mining Team
+                          The AIDDA Institute Team
                         </p>
                       </td>
                     </tr>

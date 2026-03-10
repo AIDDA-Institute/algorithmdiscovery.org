@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Search, Menu, X, Calendar, Linkedin } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { siX, siTelegram } from "simple-icons";
+import { siX } from "simple-icons";
 
 
 const navLinks = [
@@ -12,7 +12,7 @@ const navLinks = [
   // { label: "Program", href: "#program" },
   // { label: "Publications", href: "#publications" },
   { label: "Schedule", href: "#schedule" },
-    // { label: "Insights", href: "#insights" },
+  // { label: "Insights", href: "#insights" },
   { label: "Committee", href: "#committee" },
   // { label: "Apply", href: "#apply" },
 ];
@@ -33,13 +33,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -56,10 +56,9 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
   };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-100 transition-transform duration-300 ease-in-out ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-100 transition-transform duration-300 ease-in-out ${isVisible ? "translate-y-0" : "-translate-y-full"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -74,7 +73,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
                 alt="Logo"
                 className="h-10 w-auto brightness-0"
               /> */}
-              <span>Institute for <span className="font-light text-stone-400">Algorithm Mining</span></span>
+              <span>AIDDA <span className="font-light text-stone-400">Institute</span></span>
             </button>
           </div>
 
@@ -103,7 +102,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             {/* Social Icons - Desktop */}
             <div className="hidden md:flex items-center gap-3 mr-2">
               <a
-                href="https://x.com"
+                href="https://x.com/AIDDA_Institute"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-stone-400 hover:text-stone-700 transition-colors"
@@ -127,22 +126,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a
-                href="https://telegram.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stone-400 hover:text-stone-700 transition-colors"
-                aria-label="Telegram"
-              >
-                <svg
-                  role="img"
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5 fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d={siTelegram.path} />
-                </svg>
-              </a>
+
             </div>
             <Button
               onClick={onOpenSignup}
@@ -153,7 +137,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             {/* <button className="p-2.5 rounded-full bg-stone-900 text-white hover:bg-stone-800 transition-colors">
               <Search className="h-4 w-4" />
             </button> */}
-            
+
             {/* Mobile menu button */}
             <button
               className="lg:hidden p-2 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100"

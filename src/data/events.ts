@@ -73,14 +73,14 @@ export const colorMap: Record<
 export const events: Event[] = [
   {
     id: 1,
-    title: "Remote Conference",
+    title: "AIDDA 2026",
     type: "Conference",
     description:
-      "A half-day of curated talks from the people defining this field. Speakers announced soon.",
+      "A half-day remote conference of curated talks from the people defining this field. Speakers announced soon.",
     longDescription:
-      "Join us for a half-day of curated talks from the people defining the field of algorithm mining. This remote conference brings together researchers, practitioners, and enthusiasts to share insights, discoveries, and visions for the future of AI-driven algorithm discovery. You'll hear from leading experts about breakthrough techniques, real-world applications, and the theoretical foundations that are pushing this field forward. Stay tuned for speaker announcements and the detailed agenda.",
-    date: "[TBD]",
-    time: "[TBD]",
+      "Join us for a half-day of curated talks from the people defining the field of AI Driven Discovery of Algorithms. This remote conference brings together researchers, practitioners, and enthusiasts to share insights, discoveries, and visions for the future of AI-driven algorithm discovery. You'll hear from leading experts about breakthrough techniques, real-world applications, and the theoretical foundations that are pushing this field forward. Stay tuned for speaker announcements and the detailed agenda.",
+    date: "June 9, 2026",
+    time: "5:00 PM UTC",
     iconName: "Users",
     icon: Users,
     color: "emerald",

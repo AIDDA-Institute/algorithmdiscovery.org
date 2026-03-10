@@ -50,11 +50,11 @@ const publications: Publication[] = [
   },
   {
     id: 5,
-    title: "Introduction to Algorithm Mining",
+    title: "Introduction to AI Driven Discovery of Algorithms",
     authors: "TIG Foundation",
     venue: "YouTube",
     type: "video",
-    description: "Overview of algorithm mining concepts, evolutionary coding agents, and the TIG protocol for decentralized verification.",
+    description: "Overview of AI Driven Discovery of Algorithms concepts, evolutionary coding agents, and the TIG protocol for decentralized verification.",
     link: "#",
     duration: "45:32",
     views: "12.5K",
