@@ -75,7 +75,7 @@ export function Footer({ onOpenSignup }: FooterProps) {
                 <svg
                   role="img"
                   viewBox="0 0 24 24"
-                  className="h-5 w-5 fill-current"
+                  className="h-4 w-4 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d={siX.path} />

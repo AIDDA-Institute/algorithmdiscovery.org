@@ -100,7 +100,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
           {/* Right side buttons */}
           <div className="flex items-center space-x-3">
             {/* Social Icons - Desktop */}
-            <div className="hidden md:flex items-center gap-3 mr-2">
+            <div className="hidden md:flex items-center gap-3 mr-3">
               <a
                 href="https://x.com/AIDDA_Institute"
                 target="_blank"
@@ -111,7 +111,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
                 <svg
                   role="img"
                   viewBox="0 0 24 24"
-                  className="h-5 w-5 fill-current"
+                  className="h-4 w-4 fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d={siX.path} />
