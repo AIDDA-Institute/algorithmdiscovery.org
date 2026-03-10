@@ -1,23 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Calendar,
-  Clock,
-  ArrowRight,
-  ExternalLink,
-  FileText,
-  ChevronLeft,
-} from "lucide-react";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
-import {
-  events,
-  colorMap,
-  getUpcomingEvents,
-  getPastEvents,
-} from "@/data/events";
-import { EventCard } from "@/components/EventCard";
+import { Calendar, ChevronLeft } from "lucide-react";
+import { FadeIn } from "@/components/FadeIn";
+import { getUpcomingEvents, getPastEvents, colorMap } from "@/data/events";
+import { EventsGrid } from "@/components/EventsGrid";
 
 export const metadata: Metadata = {
   title: "Events Calendar",
@@ -26,8 +13,17 @@ export const metadata: Metadata = {
 };
 
 export default function EventsPage() {
-  const upcomingEvents = getUpcomingEvents();
-  const pastEvents = getPastEvents();
+  const upcomingCount = getUpcomingEvents().length;
+  const pastCount = getPastEvents().length;
+
+  // Event type legend data (no React component references, just strings)
+  const legendItems = [
+    { label: "Conference", color: "emerald" },
+    { label: "Reading Group", color: "blue" },
+    { label: "Technical Discussion", color: "violet" },
+    { label: "Speaker Event", color: "amber" },
+    { label: "Community Event", color: "rose" },
+  ];
 
   return (
     <main className="min-h-screen bg-slate-900">
@@ -64,13 +60,7 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn delay={0.15}>
             <div className="flex flex-wrap gap-3">
-              {[
-                { label: "Conference", color: "emerald" },
-                { label: "Reading Group", color: "blue" },
-                { label: "Technical Discussion", color: "violet" },
-                { label: "Speaker Event", color: "amber" },
-                { label: "Community Event", color: "rose" },
-              ].map((item) => (
+              {legendItems.map((item) => (
                 <div
                   key={item.label}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${colorMap[item.color].lightBg} border ${colorMap[item.color].border}`}
@@ -98,22 +88,13 @@ export default function EventsPage() {
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
               Upcoming Events
               <span className="text-sm text-stone-500 font-normal ml-2">
-                ({upcomingEvents.length})
+                ({upcomingCount})
               </span>
             </h2>
           </FadeIn>
 
-          {upcomingEvents.length > 0 ? (
-            <StaggerContainer
-              staggerDelay={0.1}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {upcomingEvents.map((event) => (
-                <StaggerItem key={event.id} className="h-full">
-                  <EventCard event={event} />
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+          {upcomingCount > 0 ? (
+            <EventsGrid section="upcoming" />
           ) : (
             <FadeIn delay={0.25}>
               <div className="text-center py-16 bg-slate-800/30 rounded-xl border border-stone-700/30">
@@ -131,7 +112,7 @@ export default function EventsPage() {
       </section>
 
       {/* Past Events Section */}
-      {pastEvents.length > 0 && (
+      {pastCount > 0 && (
         <section className="pb-16 md:pb-24 border-t border-stone-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
             <FadeIn>
@@ -139,21 +120,11 @@ export default function EventsPage() {
                 <div className="w-2.5 h-2.5 rounded-full bg-stone-500" />
                 Past Events
                 <span className="text-sm text-stone-500 font-normal ml-2">
-                  ({pastEvents.length})
+                  ({pastCount})
                 </span>
               </h2>
             </FadeIn>
-
-            <StaggerContainer
-              staggerDelay={0.08}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {pastEvents.map((event) => (
-                <StaggerItem key={event.id} className="h-full">
-                  <EventCard event={event} isPast />
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+            <EventsGrid section="past" />
           </div>
         </section>
       )}
@@ -174,7 +145,6 @@ export default function EventsPage() {
                 <Link href="/">
                   <Button className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-8 py-5 text-sm font-normal transition-colors">
                     Get Involved
-                    <ArrowRight className="h-4 w-4 ml-2" />
                   </Button>
                 </Link>
               </div>
