@@ -151,11 +151,10 @@ export async function POST(request: Request) {
     });
 
     if (emailError) {
-      console.error('Resend email error:', emailError);
-      // contact was created but email failed - still return success
+      console.error('CRITICAL: Resend email error (Delivery failed):', emailError);
       return NextResponse.json(
-        { success: true, message: 'Signup successful!' },
-        { status: 200 }
+        { error: `Failed to send email: ${emailError.message || 'Unknown error'}` },
+        { status: 500 }
       );
     }
 
