@@ -37,32 +37,8 @@ export async function POST(request: Request) {
     const normalizedEmail = email.trim().toLowerCase();
     const trimmedName = name.trim();
 
-    // check if contact already exists
-    let existingContact = null;
-    try {
-      const contacts = await resend.contacts.list();
+    // We let resend natively handle duplicates to avoid rate limiting
 
-      // The response structure is { data: { data: [...contacts] } }
-      const contactsArray = contacts.data?.data;
-
-      if (Array.isArray(contactsArray)) {
-        existingContact = contactsArray.find(
-          (contact: { email: string }) => contact.email.toLowerCase() === normalizedEmail
-        );
-      }
-    } catch (err) {
-      console.error('Error checking contacts:', err);
-      existingContact = null;
-    }
-
-    if (existingContact) {
-      // contact exists - skip sending email again
-      // console.log(`Contact ${normalizedEmail} already exists, skipping welcome email`);
-      return NextResponse.json(
-        { success: true, existing: true, message: 'You are already signed up!' },
-        { status: 200 }
-      );
-    }
 
     // create new contact
     const { error: createError } = await resend.contacts.create({
