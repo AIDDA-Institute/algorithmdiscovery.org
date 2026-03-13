@@ -6,6 +6,9 @@ const resend = new Resend(process.env.RESEND_API_KEY || 're_stub');
 // validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// delay helper for Resend rate limits
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -37,8 +40,34 @@ export async function POST(request: Request) {
     const normalizedEmail = email.trim().toLowerCase();
     const trimmedName = name.trim();
 
-    // We let resend natively handle duplicates to avoid rate limiting
+    // add delay before checking contacts
+    await delay(1000);
 
+    // check if contact already exists
+    let existingContact = null;
+    try {
+      const contacts = await resend.contacts.list();
+
+      const contactsArray = contacts.data?.data;
+
+      if (Array.isArray(contactsArray)) {
+        existingContact = contactsArray.find(
+          (contact: { email: string }) => contact.email.toLowerCase() === normalizedEmail
+        );
+      }
+    } catch (err) {
+      console.error('Error checking contacts:', err);
+      existingContact = null;
+    }
+
+    if (existingContact) {
+      // if contact exists - skip
+      // console.log(`Contact ${normalizedEmail} already exists, skipping welcome email`);
+      return NextResponse.json(
+        { success: true, existing: true, message: 'You are already signed up!' },
+        { status: 200 }
+      );
+    }
 
     // create new contact
     const { error: createError } = await resend.contacts.create({
@@ -56,6 +85,8 @@ export async function POST(request: Request) {
     }
 
     // console.log(`Created new contact: ${normalizedEmail}`);
+
+    await delay(1000); // 1 sec
 
     // send welcome email
     const { error: emailError } = await resend.emails.send({
