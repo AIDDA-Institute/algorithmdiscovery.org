@@ -585,7 +585,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Guides & Tutorials */}
-      <section className="py-16 md:py-20 lg:py-24 bg-slate-900">
+      {/* <section className="py-16 md:py-20 lg:py-24 bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="flex items-center gap-3 mb-12">
@@ -604,7 +604,6 @@ export default function ResourcesPage() {
                 <div className="group">
                   {guide.type === "youtube" ? (
                     <>
-                      {/* Embedded YouTube Player */}
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-800 mb-4">
                         <iframe
                           src={`https://www.youtube.com/embed/${getYouTubeVideoId(guide.videoUrl!)}`}
@@ -615,9 +614,7 @@ export default function ResourcesPage() {
                         />
                       </div>
                       
-                      {/* Video Info */}
                       <div className="flex items-start gap-4">
-                        {/* Channel Avatar Placeholder */}
                         <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0">
                           <Users className="h-5 w-5 text-slate-400" />
                         </div>
@@ -639,7 +636,6 @@ export default function ResourcesPage() {
                     </>
                   ) : (
                     <>
-                      {/* Website Card Image */}
                       <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-800 mb-4">
                         <Image
                           src={guide.image!}
@@ -647,15 +643,13 @@ export default function ResourcesPage() {
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
                         />
-                        {/* Website Badge */}
                         <div className="absolute top-3 right-3 bg-emerald-600 text-white text-xs px-2 py-1 rounded flex items-center gap-1.5">
                           <span>Website</span>
                         </div>
                       </div>
                       
-                      {/* Website Info */}
                       <div className="flex items-start gap-4">
-                        {/* Website Icon Placeholder */}
+
                         <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
                           <BookOpen className="h-5 w-5 text-emerald-400" />
                         </div>
@@ -681,7 +675,7 @@ export default function ResourcesPage() {
             ))}
           </StaggerContainer>
         </div>
-      </section>
+      </section> */}
 
       {/* Tools & Frameworks */}
       <section className="py-16 md:py-20 lg:py-24 bg-stone-50">
