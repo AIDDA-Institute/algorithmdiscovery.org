@@ -1,9 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X, Calendar, Linkedin } from "lucide-react";
+import { Search, Menu, X, Calendar, Linkedin, BookOpen } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siX } from "simple-icons";
 
 
@@ -29,6 +30,8 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,9 +51,11 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
   }, [lastScrollY]);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (isHomePage) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setMobileMenuOpen(false);
   };
@@ -64,8 +69,8 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <button
-              onClick={() => scrollToSection("#overview")}
+            <Link
+              href="/"
               className="flex items-center gap-3 text-lg font-medium text-stone-900 tracking-tight hover:text-stone-700 transition-colors"
             >
               {/* <img
@@ -74,19 +79,29 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
                 className="h-10 w-auto brightness-0"
               /> */}
               <span>AIDDA <span className="font-light text-stone-400">Institute</span></span>
-            </button>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal"
-              >
-                {link.label}
-              </button>
+              isHomePage ? (
+                <button
+                  key={link.label}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={`/${link.href}`}
+                  className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal"
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
             <Link
               href="/events"
@@ -94,6 +109,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             >
               <Calendar className="h-3.5 w-3.5" />
               Events
+            </Link>
+            <Link
+              href="/resources"
+              className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
+            >
+              <BookOpen className="h-3.5 w-3.5" />
+              Resources
             </Link>
           </div>
 
@@ -165,13 +187,24 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
         <div className="lg:hidden bg-white border-t border-stone-200">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
-              >
-                {link.label}
-              </button>
+              isHomePage ? (
+                <button
+                  key={link.label}
+                  onClick={() => scrollToSection(link.href)}
+                  className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={`/${link.href}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
             <Link
               href="/events"
@@ -179,6 +212,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
             >
               Events
+            </Link>
+            <Link
+              href="/resources"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
+            >
+              Resources
             </Link>
           </div>
         </div>
