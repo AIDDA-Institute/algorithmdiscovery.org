@@ -43,7 +43,7 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
                 speaker events, and community gatherings. To add your event to the calendar, please reach out to us at{" "}
                 <a
                   href="mailto:events@algorithmdiscovery.org"
-                  className="text-stone-900 underline underline-offset-2 hover:text-stone-700"
+                  className="text-stone-900 underline underline-offset-2 hover:text-stone-700 text-white"
                 >
                   events@algorithmdiscovery.org
                 </a>
