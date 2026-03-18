@@ -50,6 +50,16 @@ export default function EventsPage() {
                 speaker events, and community gatherings. Connect with
                 researchers and practitioners in AI Driven Discovery of Algorithms.
               </p>
+              <p className="text-lg sm:text-xl text-stone-400 font-normal leading-relaxed">
+                To add your event to the calendar, please reach out to us at{" "}
+                <a
+                  href="mailto:events@algorithmdiscovery.org"
+                  className="text-stone-900 underline underline-offset-2 hover:text-stone-700"
+                >
+                  events@algorithmdiscovery.org
+                </a>
+                .
+              </p>
             </div>
           </FadeIn>
         </div>

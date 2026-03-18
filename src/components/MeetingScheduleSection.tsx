@@ -40,7 +40,14 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
               </h2>
               <p className="mt-4 text-lg text-stone-400 max-w-2xl font-normal">
                 Join our conference, reading groups, technical discussions,
-                speaker events, and community gatherings.
+                speaker events, and community gatherings. To add your event to the calendar, please reach out to us at{" "}
+                <a
+                  href="mailto:events@algorithmdiscovery.org"
+                  className="text-stone-900 underline underline-offset-2 hover:text-stone-700"
+                >
+                  events@algorithmdiscovery.org
+                </a>
+                .
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
