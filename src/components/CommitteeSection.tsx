@@ -1,7 +1,7 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { Globe } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
 
 const committeeMembers = [
@@ -9,12 +9,20 @@ const committeeMembers = [
     name: "Dr. Daniel Adams",
     email: "daniel@tig.foundation",
     bio: "Dr. Daniel Adams is a Mathematics Researcher at The Innovation Game (TIG). He holds an MSc in Mathematics from the University of Bristol and a PhD from the University of Edinburgh, where he specialised in Stochastic Analysis and Optimal Transport. He was awarded a prestigious Maxwell Research Fellowship jointly by the University of Edinburgh and Heriot-Watt University, and later held a postdoctoral position at Université Paris Dauphine.",
+    linkedin: "https://www.linkedin.com/in/daniel-t-s-adams/",
   },
   {
     name: "Henrique Assumpção",
     email: "henriquesoares@dcc.ufmg.br",
     bio: "Henrique Assumpção is a Machine Learning Researcher at Inter and a Master's student in Computer Science at Universidade Federal de Minas Gerais (UFMG). He holds a BSc in Computer Science from UFMG, with a minor in Pure Mathematics. He is the lead developer of CodeEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research spans representation learning, language models, and algebraic graph theory.",
+    linkedin: "https://www.linkedin.com/in/henriqueassumpcao/",
   },
+  {
+    name: "Shayan Chashm Jahan",
+    email: "shayan@repovive.com",
+    bio: "Shayan Chashm Jahan is a PhD student in Theoretical Computer Science at the University of Maryland, College Park. His research spans algorithms and algorithmic game theory, with work appearing at venues including NeurIPS 2024. He is the founder of Repovive, a platform for algorithmic coding competitions with over 7,000 users, and runs a YouTube channel with over 30,000 subscribers dedicated to teaching algorithms.",
+    linkedin: "https://www.linkedin.com/in/shayan-chashm-jahan-32b4a2216/",
+  }
   //   {
   //     name: "Prof. Michael Rodriguez",
   //     email: "m.rodriguez@algorithmdiscovery.org",
@@ -69,11 +77,11 @@ export function CommitteeSection() {
                           {member.email}
                         </a>
                         <a
-                          href="#"
+                          href={member.linkedin}
                           className="text-stone-400 hover:text-stone-700 transition-colors"
-                          aria-label="Website"
+                          aria-label="LinkedIn"
                         >
-                          <Globe className="h-4 w-4" />
+                          <Linkedin className="h-4 w-4" />
                         </a>
                       </div>
                     </div>
