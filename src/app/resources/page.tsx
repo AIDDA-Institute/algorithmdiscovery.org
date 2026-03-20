@@ -276,7 +276,7 @@ const tools = [
     url: "https://github.com/liugangcode/deepevolve",
     github: "https://github.com/liugangcode/deepevolve",
     category: "Framework",
-    stars: "10k",
+    stars: "124",
     language: "Python",
     tags: ["coding-agent ", "llm", "multi-agent "],
   },
