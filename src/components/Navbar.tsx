@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X, Calendar, Linkedin, BookOpen, Users, HelpCircle } from "lucide-react";
+import { Search, Menu, X, Calendar, Linkedin, BookOpen, Users, HelpCircle, BarChart3 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -103,6 +103,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
                 </Link>
               )
             ))}
+            <span className="text-stone-300">|</span>
             <Link
               href="/events"
               className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
@@ -130,6 +131,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             >
               <HelpCircle className="h-3.5 w-3.5" />
               Research Questions
+            </Link>
+            <Link
+              href="/benchmarks"
+              className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
+            >
+              <BarChart3 className="h-3.5 w-3.5" />
+              Benchmarks
             </Link>
           </div>
 
@@ -247,6 +255,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
             >
               Research Questions
+            </Link>
+            <Link
+              href="/benchmarks"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
+            >
+              Benchmarks
             </Link>
           </div>
         </div>

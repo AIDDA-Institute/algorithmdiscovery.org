@@ -7,17 +7,18 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SignupPopup } from "@/components/SignupPopup";
 import { FadeIn } from "@/components/FadeIn";
-import { 
+import { HeroAnimation } from "@/components/HeroAnimation";
+import {
   researchQuestions,
   questionCategories,
   progressStatuses,
-  type ResearchQuestion 
+  type ResearchQuestion
 } from "@/data/research-questions";
-import { 
-  ArrowRight, 
-  HelpCircle, 
-  BookOpen, 
-  Mail, 
+import {
+  ArrowRight,
+  HelpCircle,
+  BookOpen,
+  Mail,
   Target,
   Lightbulb,
   ChevronDown,
@@ -261,7 +262,11 @@ export default function ResearchQuestionsPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background Animation */}
+        <div className="absolute inset-0 opacity-40">
+          <HeroAnimation />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <FadeIn delay={0.1}>
               <Link
