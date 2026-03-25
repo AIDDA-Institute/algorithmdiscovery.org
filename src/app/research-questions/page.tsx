@@ -116,16 +116,16 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
             </div>
           </div>
           
-          {/* Progress & Impact */}
-          <div className="flex flex-wrap gap-2 mb-3">
+          {/* Progress & Impact - Commented Out */}
+          {/* <div className="flex flex-wrap gap-2 mb-3">
             <ProgressBadge status={question.progressStatus} />
             {question.impact.map((imp) => (
               <ImpactBadge key={imp} impact={imp} />
             ))}
-          </div>
+          </div> */}
           
-          {/* Related Areas */}
-          <div className="flex flex-wrap gap-1.5 line-clamp-2">
+          {/* Related Areas - Commented Out */}
+          {/* <div className="flex flex-wrap gap-1.5 line-clamp-2">
             {question.relatedAreas.map((area) => (
               <span
                 key={area}
@@ -134,7 +134,7 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
                 {area}
               </span>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Quick Info */}
