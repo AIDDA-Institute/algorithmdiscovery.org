@@ -104,12 +104,12 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
 
   return (
     <FadeIn delay={0.1 + index * 0.08}>
-      <div className="group bg-white border border-stone-200 rounded-2xl overflow-hidden hover:border-stone-300 hover:shadow-lg transition-all duration-300 h-full flex flex-col min-h-[320px]">
+      <div className="group bg-white border border-stone-200 rounded-2xl overflow-hidden hover:border-stone-300 hover:shadow-lg transition-all duration-300 flex flex-col">
         {/* Header */}
         <div className="p-6 border-b border-stone-100 flex-1">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex-1">
-              <h3 className="text-xl font-medium text-stone-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug line-clamp-2">
+              <h3 className="text-xl font-medium text-stone-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">
                 {question.question}
               </h3>
               <p className="text-stone-600 text-sm leading-relaxed line-clamp-2">{question.shortDescription}</p>
@@ -140,14 +140,14 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
         {/* Quick Info */}
         <div className="px-6 py-4 bg-stone-50/50 border-b border-stone-100">
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            <div className="flex items-center gap-1.5 text-stone-600">
+            {/* <div className="flex items-center gap-1.5 text-stone-600">
               <BookOpen className="h-4 w-4 text-stone-400" />
               <span>{question.publications.length} papers</span>
             </div>
             <div className="flex items-center gap-1.5 text-stone-600">
               <Users className="h-4 w-4 text-stone-400" />
               <span>{question.workingGroups.length} working groups</span>
-            </div>
+            </div> */}
             <div className="flex items-center gap-1.5 text-stone-600">
               <Clock className="h-4 w-4 text-stone-400" />
               <span className="capitalize">{question.progressStatus.replace("-", " ")}</span>
@@ -156,28 +156,25 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
         </div>
 
         {/* Expandable Content */}
-        {isExpanded && (
-          <div className="border-b border-stone-100">
-            {/* Full Description */}
-            <div className="p-6 border-b border-stone-100">
+        <div
+          className={cn(
+            "grid transition-all duration-300 ease-in-out border-b border-stone-100",
+            isExpanded ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          )}
+        >
+          <div className="overflow-hidden">
+            {/* Combined Description and Motivation */}
+            <div className="p-6">
               <h4 className="text-sm font-medium text-stone-900 mb-3 flex items-center gap-2">
                 <FileText className="h-4 w-4 text-blue-600" />
-                Detailed Description
+                About This Question
               </h4>
-              <p className="text-sm text-stone-600 leading-relaxed">{question.fullDescription}</p>
-            </div>
-
-            {/* Motivation */}
-            <div className="p-6 border-b border-stone-100">
-              <h4 className="text-sm font-medium text-stone-900 mb-3 flex items-center gap-2">
-                <Lightbulb className="h-4 w-4 text-amber-600" />
-                Why This Matters
-              </h4>
+              <p className="text-sm text-stone-600 leading-relaxed mb-4">{question.fullDescription}</p>
               <p className="text-sm text-stone-600 leading-relaxed">{question.motivation}</p>
             </div>
 
-            {/* Key Challenges */}
-            <div className="p-6 border-b border-stone-100">
+            {/* Key Challenges - Commented Out */}
+            {/* <div className="p-6 border-t border-stone-100">
               <h4 className="text-sm font-medium text-stone-900 mb-4 flex items-center gap-2">
                 <Target className="h-4 w-4 text-emerald-600" />
                 Key Challenges
@@ -190,10 +187,10 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
 
-            {/* Publications */}
-            <div className="p-6 border-b border-stone-100">
+            {/* Publications - Commented Out */}
+            {/* <div className="p-6 border-t border-stone-100">
               <h4 className="text-sm font-medium text-stone-900 mb-4 flex items-center gap-2">
                 <BookOpen className="h-4 w-4 text-violet-600" />
                 Related Publications
@@ -212,10 +209,10 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
-            {/* Working Groups */}
-            <div className="p-6 bg-stone-50">
+            {/* Working Groups - Commented Out */}
+            {/* <div className="p-6 bg-stone-50 border-t border-stone-100">
               <h4 className="text-sm font-medium text-stone-900 mb-3">Contributing Working Groups</h4>
               <div className="flex flex-wrap gap-2">
                 {question.workingGroups.map((wg) => (
@@ -227,9 +224,9 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
                   </span>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
-        )}
+        </div>
 
         {/* Expand Button */}
         <button
@@ -286,8 +283,7 @@ export default function ResearchQuestionsPage() {
 
             <FadeIn delay={0.2}>
               <p className="text-lg md:text-xl text-stone-600 leading-relaxed font-normal max-w-2xl mb-8">
-                Fundamental questions that AIDDA is working to answer. These represent 
-                the cutting edge of AI-driven algorithm discovery research.
+                Fundamental questions that AIDDA is working to answer. If you&apos;re interested in these questions, we&apos;d love to hear from you.
               </p>
             </FadeIn>
 
@@ -323,11 +319,10 @@ export default function ResearchQuestionsPage() {
             <p className="text-stone-500 mb-12 ml-[52px]">Click on any question to explore details and related work</p>
           </FadeIn>
 
-          {/* Categories & Progress Status */}
-          <FadeIn delay={0.1}>
+          {/* Categories & Progress Status - Commented Out */}
+          {/* <FadeIn delay={0.1}>
             <div className="bg-white rounded-2xl border border-stone-200 p-6 mb-10">
               <div className="grid lg:grid-cols-2 gap-8">
-                {/* Question Categories */}
                 <div>
                   <h3 className="text-sm font-medium text-stone-500 mb-4 uppercase tracking-wider flex items-center gap-2">
                     <Search className="h-4 w-4" />
@@ -345,7 +340,6 @@ export default function ResearchQuestionsPage() {
                   </div>
                 </div>
 
-                {/* Progress Status */}
                 <div>
                   <h3 className="text-sm font-medium text-stone-500 mb-4 uppercase tracking-wider flex items-center gap-2">
                     <Clock className="h-4 w-4" />
@@ -370,10 +364,10 @@ export default function ResearchQuestionsPage() {
                 </div>
               </div>
             </div>
-          </FadeIn>
+          </FadeIn> */}
 
           {/* Research Questions Grid */}
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-6 items-start">
             {researchQuestions.map((question, index) => (
               <ResearchQuestionCard key={question.id} question={question} index={index} />
             ))}
