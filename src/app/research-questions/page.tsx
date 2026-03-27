@@ -137,23 +137,23 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
           </div> */}
         </div>
 
-        {/* Quick Info */}
-        <div className="px-6 py-4 bg-stone-50/50 border-b border-stone-100">
+        {/* Quick Info - Commented Out */}
+        {/* <div className="px-6 py-4 bg-stone-50/50 border-b border-stone-100">
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            {/* <div className="flex items-center gap-1.5 text-stone-600">
+            <div className="flex items-center gap-1.5 text-stone-600">
               <BookOpen className="h-4 w-4 text-stone-400" />
               <span>{question.publications.length} papers</span>
             </div>
             <div className="flex items-center gap-1.5 text-stone-600">
               <Users className="h-4 w-4 text-stone-400" />
               <span>{question.workingGroups.length} working groups</span>
-            </div> */}
+            </div>
             <div className="flex items-center gap-1.5 text-stone-600">
               <Clock className="h-4 w-4 text-stone-400" />
               <span className="capitalize">{question.progressStatus.replace("-", " ")}</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Expandable Content */}
         <div
@@ -289,14 +289,14 @@ export default function ResearchQuestionsPage() {
 
             <FadeIn delay={0.25}>
               <div className="flex flex-wrap items-center gap-6">
-                <div className="flex items-center gap-2 text-sm text-stone-500">
+                {/* <div className="flex items-center gap-2 text-sm text-stone-500">
                   <HelpCircle className="h-4 w-4" />
                   <span>{researchQuestions.length} open questions</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-stone-500">
+                </div> */}
+                {/* <div className="flex items-center gap-2 text-sm text-stone-500">
                   <Beaker className="h-4 w-4" />
                   <span>{researchQuestions.filter(q => q.progressStatus === "active").length} actively researched</span>
-                </div>
+                </div> */}
               </div>
             </FadeIn>
           </div>

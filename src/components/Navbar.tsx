@@ -132,13 +132,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               <HelpCircle className="h-3.5 w-3.5" />
               Research Questions
             </Link>
-            <Link
+            {/* <Link
               href="/benchmarks"
               className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
             >
               <BarChart3 className="h-3.5 w-3.5" />
               Benchmarks
-            </Link>
+            </Link> */}
           </div>
 
           {/* Right side buttons */}
@@ -242,13 +242,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             >
               Resources
             </Link>
-            <Link
+            {/* <Link
               href="/working-groups"
               onClick={() => setMobileMenuOpen(false)}
               className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
             >
               Working Groups
-            </Link>
+            </Link> */}
             <Link
               href="/research-questions"
               onClick={() => setMobileMenuOpen(false)}
@@ -256,13 +256,13 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             >
               Research Questions
             </Link>
-            <Link
+            {/* <Link
               href="/benchmarks"
               onClick={() => setMobileMenuOpen(false)}
               className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
             >
               Benchmarks
-            </Link>
+            </Link> */}
           </div>
         </div>
       )}

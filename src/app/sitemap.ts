@@ -27,22 +27,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}working-groups`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
       url: `${SITE_URL}research-questions`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.85,
-    },
-    {
-      url: `${SITE_URL}benchmarks`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
     },
   ];
 
