@@ -316,7 +316,8 @@ export default function ResearchQuestionsPage() {
                 Active Research Questions
               </h2>
             </div>
-            <p className="text-stone-500 mb-12 ml-[52px]">Click on any question to explore details and related work</p>
+            <br></br>
+            {/* <p className="text-stone-500 mb-12 ml-[52px]">Click on any question to explore details and related work</p> */}
           </FadeIn>
 
           {/* Categories & Progress Status - Commented Out */}
