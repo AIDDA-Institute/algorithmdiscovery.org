@@ -242,12 +242,12 @@ export default async function EventPage({ params }: EventPageProps) {
                     </Button>
                   )}
 
-                  <Link href="/" className="sm:ml-auto">
+                  {/* <Link href="/" className="sm:ml-auto">
                     <Button className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-6 font-normal transition-colors w-full sm:w-auto">
                       Get Involved
                       <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>
-                  </Link>
+                  </Link> */}
                 </div>
               </CardContent>
             </Card>

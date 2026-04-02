@@ -72,16 +72,33 @@ export function EventCard({ event, isPast = false, onOpenSignup }: EventCardProp
                 {/* Action Buttons (Only for Upcoming) */}
                 {!isPast && (
                     <div className="flex flex-col gap-2 mt-auto">
-                        {/* Get Notified Button */}
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={onOpenSignup}
-                            className="w-full rounded-full border-stone-600 text-black hover:bg-stone-800 hover:text-white transition-colors text-xs font-normal"
-                        >
-                            Get Notified when Registrations Opens
-                            <ArrowRight className="h-3 w-3 ml-1" />
-                        </Button>
+                        {event.lumaUrl ? (
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                asChild
+                                className="w-full rounded-full border-emerald-500 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 transition-colors text-xs font-normal"
+                            >
+                                <a
+                                    href={event.lumaUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Register on Luma
+                                    <ExternalLink className="h-3 w-3 ml-1" />
+                                </a>
+                            </Button>
+                        ) : (
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={onOpenSignup}
+                                className="w-full rounded-full border-stone-600 text-black hover:bg-stone-800 hover:text-white transition-colors text-xs font-normal"
+                            >
+                                Get Notified when Registrations Opens
+                                <ArrowRight className="h-3 w-3 ml-1" />
+                            </Button>
+                        )}
 
                         {/* Calendar Button */}
                         {isTBD ? (

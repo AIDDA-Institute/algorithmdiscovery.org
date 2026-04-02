@@ -114,7 +114,7 @@ export const events: Event[] = [
     time: "1:00 PM - 7:00 PM PDT",
     iconName: "Mic",
     icon: Mic,
-    color: "blue",
+    color: "amber",
     status: "upcoming",
     lumaUrl: "https://luma.com/automateddiscovery",
     location: "AGI House SF: 170 St. Germain Ave. San Francisco CA 94114",

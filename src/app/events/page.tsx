@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Calendar, ChevronLeft } from "lucide-react";
+import { Calendar, ChevronLeft, Users, BookOpen, Mic } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { getUpcomingEvents, getPastEvents, colorMap } from "@/data/events";
 import { EventsGrid } from "@/components/EventsGrid";
@@ -16,13 +16,13 @@ export default function EventsPage() {
   const upcomingCount = getUpcomingEvents().length;
   const pastCount = getPastEvents().length;
 
-  // Event type legend data (no React component references, just strings)
+  // Event type legend data
   const legendItems = [
-    { label: "Conference", color: "emerald" },
-    { label: "Reading Group", color: "blue" },
-    { label: "Technical Discussion", color: "violet" },
-    { label: "Speaker Event", color: "amber" },
-    { label: "Community Event", color: "rose" },
+    { label: "Conference", color: "emerald", icon: Users },
+    { label: "Reading Group", color: "blue", icon: BookOpen },
+    // { label: "Technical Discussion", color: "violet" },
+    { label: "Speaker Event", color: "amber", icon: Mic },
+    // { label: "Community Event", color: "rose" },
   ];
 
   return (
@@ -60,21 +60,22 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn delay={0.15}>
             <div className="flex flex-wrap gap-3">
-              {legendItems.map((item) => (
-                <div
-                  key={item.label}
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${colorMap[item.color].lightBg} border ${colorMap[item.color].border}`}
-                >
+              {legendItems.map((item) => {
+                const Icon = item.icon;
+                return (
                   <div
-                    className={`w-2 h-2 rounded-full ${colorMap[item.color].text.replace("text-", "bg-")}`}
-                  />
-                  <span
-                    className={`text-xs font-normal ${colorMap[item.color].text}`}
+                    key={item.label}
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${colorMap[item.color].lightBg} border ${colorMap[item.color].border}`}
                   >
-                    {item.label}
-                  </span>
-                </div>
-              ))}
+                    {Icon && <Icon className={`h-3.5 w-3.5 ${colorMap[item.color].text}`} />}
+                    <span
+                      className={`text-xs font-normal ${colorMap[item.color].text}`}
+                    >
+                      {item.label}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </FadeIn>
         </div>
