@@ -22,9 +22,9 @@ export const researchQuestions: ResearchQuestion[] = [
   {
     id: "robustness-problem-types",
     question: "Can these frameworks produce algorithms which are robust to a range of problem types?",
-    shortDescription: "Investigating the generalization capabilities of AI-discovered algorithms across diverse problem domains.",
-    fullDescription: "A critical challenge in AI-driven algorithm discovery is ensuring that the generated algorithms generalize well beyond the specific problem instances they were trained on. This research question explores whether current frameworks can produce algorithms that maintain performance across varying problem sizes, structures, and constraints without requiring retraining or significant modification.",
-    motivation: "For AI-discovered algorithms to be practically useful, they must demonstrate robustness similar to human-designed algorithms like quicksort or Dijkstra's algorithm, which work reliably across a wide range of inputs and scenarios.",
+    shortDescription: "Investigating the capabilities of AI-discovered algorithms across diverse problem domains.",
+    fullDescription: "This research question explores whether current frameworks can produce algorithms that maintain performance across varying problem sizes, structures, and constraints without requiring retraining or significant modification.",
+    motivation: "For AI-discovered algorithms to be practically useful, must they demonstrate to work reliably across a wide range of inputs and scenarios?",
     keyChallenges: [
       "Defining appropriate robustness metrics for algorithmic performance",
       "Creating diverse benchmark suites that span problem types",
@@ -56,7 +56,7 @@ export const researchQuestions: ResearchQuestion[] = [
     id: "overfitting-training-data",
     question: "Do the algorithms these frameworks produce overfit to training data?",
     shortDescription: "Examining whether AI-discovered algorithms memorize training instances rather than learning generalizable principles.",
-    fullDescription: "Overfitting is a well-known problem in machine learning, but its manifestation in algorithm discovery is particularly subtle. When an AI system discovers an algorithm, it might encode specific patterns from the training distribution rather than discovering the underlying algorithmic principle. This research investigates detection methods, mitigation strategies, and the fundamental tension between training on specific instances and discovering general algorithms.",
+    fullDescription: "Overfitting is a well-known problem in machine learning. When an AI system discovers an algorithm, it might encode specific patterns from the training distribution rather than discovering the underlying algorithmic principle. This research investigates detection methods, mitigation strategies, and the fundamental tension between training on specific instances and discovering general algorithms.",
     motivation: "If AI-discovered algorithms merely memorize training patterns, they will fail on novel inputs and lack the reliability required for production systems. Understanding and preventing overfitting is essential for trustworthy algorithm discovery.",
     keyChallenges: [
       "Distinguishing between valid algorithmic patterns and training set artifacts",
@@ -89,7 +89,7 @@ export const researchQuestions: ResearchQuestion[] = [
     id: "algorithm-mining",
     question: "How far are we from the scenario of 'algorithm mining' where entities with no domain knowledge effectively turn compute into algorithm search?",
     shortDescription: "Exploring the democratization of algorithm discovery and the compute-knowledge tradeoff in AI-driven research.",
-    fullDescription: "The vision of 'algorithm mining' represents a paradigm shift where computational resources can substitute for deep domain expertise in discovering novel algorithms. This research question examines how close we are to this reality, what barriers remain, and what implications it has for research democratization, industry competition, and the future of computer science. It explores the compute-knowledge frontier and whether we're approaching a world where anyone with sufficient compute can discover state-of-the-art algorithms.",
+    fullDescription: "The vision of 'algorithm mining' represents a paradigm shift where computational resources can substitute for deep domain expertise in discovering novel algorithms. See Richard Suttons: The Bitter Lesson. This research question examines how close we are to this reality, what barriers remain, and what implications it has for research democratization, industry competition, and the future of computer science. It explores the compute-knowledge frontier and whether we're approaching a world where anyone with sufficient compute can discover state-of-the-art algorithms.",
     motivation: "Understanding this trajectory is crucial for anticipating how AI will transform research and industry. It raises important questions about access, equity, and the changing nature of expertise in algorithmic innovation.",
     keyChallenges: [
       "Quantifying the compute-knowledge tradeoff in algorithm discovery",
@@ -122,13 +122,14 @@ export const researchQuestions: ResearchQuestion[] = [
     id: "novelty-vs-optimization",
     question: "How should we think about novelty of algorithmic method vs. optimization of known methods?",
     shortDescription: "Investigating the balance between discovering fundamentally new algorithmic approaches and optimizing existing ones.",
-    fullDescription: "This research question addresses a fundamental tension in algorithm discovery: should we prioritize discovering entirely novel algorithmic paradigms, or focus on optimizing well-understood methods and what entity (if any) should be attributed with the novel idea that led to the new method? Novel approaches may unlock breakthroughs but carry higher risk and verification burden, while optimization of known methods offers more predictable improvements but may hit diminishing returns. This question explores evaluation frameworks, resource allocation strategies, and the epistemological criteria for judging progress in algorithmic innovation.",
+    fullDescription: "This research question addresses a fundamental tension in algorithm discovery: should we prioritize discovering entirely novel algorithmic paradigms, or focus on optimizing well-understood methods and what entity (if any) should be attributed with the novel idea that led to the new method? Novel approaches may unlock breakthroughs but carry higher risk and verification burden, while optimization of known methods offers more predictable improvements but may hit diminishing returns. This question explores evaluation frameworks, resource allocation strategies, and the criteria for judging progress in algorithmic innovation.",
+
     motivation: "As AI systems become more capable of both optimization and discovery, we need frameworks to guide research priorities and evaluate contributions. This question is central to defining what constitutes meaningful progress in algorithmic innovation.",
     keyChallenges: [
       "Developing evaluation frameworks that fairly compare novel and optimized methods",
       "Understanding the risk-reward tradeoffs of novel vs. incremental research",
       "Creating benchmarks that reward genuine novelty without sacrificing practicality",
-      "Defining epistemological criteria for algorithmic innovation"
+      "Defining criteria for algorithmic innovation"
     ],
     relatedAreas: ["Novelty Detection", "Optimization", "Research Evaluation", "Benchmarking"],
     impact: ["High", "Emerging"],
@@ -155,8 +156,8 @@ export const researchQuestions: ResearchQuestion[] = [
     id: "real-world-applicability",
     question: "How applicable are these frameworks to real world problems, expanding beyond benchmark settings?",
     shortDescription: "Assessing the practical utility of AI-discovered algorithms in production environments and real-world constraints.",
-    fullDescription: "While AI-driven algorithm discovery has shown impressive results on standardized benchmarks, the transition to real-world applications presents unique challenges. Real problems often involve messy data, changing requirements, resource constraints, and integration with legacy systems. This research question systematically evaluates how well current frameworks handle these complexities, identifies gaps between benchmark performance and practical utility, and develops methodologies for testing algorithms in realistic conditions.",
-    motivation: "For AI-discovered algorithms to achieve widespread adoption, they must demonstrate value in real production environments, not just controlled benchmarks. Understanding the barriers to real-world deployment is essential for directing future research.",
+    fullDescription: "While AI-driven algorithm discovery has shown impressive results on standardized benchmarks, the transition to real-world applications presents unique challenges. Real problems often involve messy data, changing requirements, resource constraints, interpretable coding. This research question evaluates how well current frameworks handle these complexities, identifies gaps between benchmark performance and practical utility, and develops methodologies for testing algorithms in realistic conditions.",
+    motivation: "For AI-discovered algorithms to achieve widespread adoption, they must demonstrate value in real production environments, not just controlled benchmarks. Understanding the barriers to real-world deployment is essential for directing future research. Companies are springing up that aim to offer AI-discovered algorithms as commercial products, and we will be interacting with them.",
     keyChallenges: [
       "Designing evaluation protocols that reflect real-world complexity",
       "Handling dynamic and changing problem constraints",
