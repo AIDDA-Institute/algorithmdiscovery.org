@@ -224,6 +224,24 @@ export default async function EventPage({ params }: EventPageProps) {
                     </Button>
                   )}
 
+                  {event.lumaUrl && (
+                    <Button
+                      variant="outline"
+                      asChild
+                      className="rounded-full border-stone-600 bg-transparent text-white hover:bg-stone-800 hover:text-white transition-colors font-normal"
+                    >
+                      <a
+                        href={event.lumaUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Calendar className="h-4 w-4 mr-2" />
+                        Register on Luma
+                        <ExternalLink className="h-4 w-4 ml-2" />
+                      </a>
+                    </Button>
+                  )}
+
                   <Link href="/" className="sm:ml-auto">
                     <Button className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-6 font-normal transition-colors w-full sm:w-auto">
                       Get Involved
@@ -262,18 +280,35 @@ export default async function EventPage({ params }: EventPageProps) {
             <FadeIn delay={0.25}>
               <h2 className="text-2xl font-normal text-white mb-6 flex items-center gap-3">
                 <Users className="h-5 w-5 text-stone-400" />
-                Speakers
+                Speakers & Talks
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-4">
                 {event.speakers.map((speaker, index) => (
-                  <Card
+                  <div
                     key={index}
-                    className="bg-slate-800/30 border-stone-700/30"
+                    className="flex flex-col gap-1 p-4 bg-slate-800/30 rounded-xl border border-stone-700/30"
                   >
-                    <CardContent className="p-4">
-                      <p className="text-white font-normal">{speaker}</p>
-                    </CardContent>
-                  </Card>
+                    <div className="flex items-center gap-2">
+                      {speaker.link ? (
+                        <a
+                          href={speaker.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-white font-medium hover:text-emerald-400 transition-colors"
+                        >
+                          {speaker.name}
+                          <ExternalLink className="h-3 w-3 ml-1 inline" />
+                        </a>
+                      ) : (
+                        <span className="text-white font-medium">{speaker.name}</span>
+                      )}
+                    </div>
+                    {speaker.topic && (
+                      <p className="text-stone-400 text-sm font-normal pl-0">
+                        {speaker.topic}
+                      </p>
+                    )}
+                  </div>
                 ))}
               </div>
             </FadeIn>

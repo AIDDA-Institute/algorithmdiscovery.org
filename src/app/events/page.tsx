@@ -130,7 +130,7 @@ export default function EventsPage() {
       )}
 
       {/* Footer CTA */}
-      <section className="pb-16 md:pb-24">
+      {/* <section className="pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="bg-gradient-to-r from-emerald-900/30 to-slate-800/30 rounded-2xl p-8 md:p-12 border border-emerald-500/20">
@@ -151,7 +151,7 @@ export default function EventsPage() {
             </div>
           </FadeIn>
         </div>
-      </section>
+      </section> */}
 
       {/* Simple Footer */}
       <footer className="border-t border-stone-800 py-8">
