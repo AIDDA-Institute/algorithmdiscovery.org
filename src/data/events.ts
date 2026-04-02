@@ -19,9 +19,14 @@ export interface Event {
   color: string;
   status: "upcoming" | "past";
   notionUrl?: string;
+  lumaUrl?: string;
   calendarUrl?: string;
   location?: string;
-  speakers?: string[];
+  speakers?: {
+    name: string;
+    topic?: string;
+    link?: string;
+  }[];
   agenda?: string[];
   tags?: string[];
 }
@@ -87,7 +92,7 @@ export const events: Event[] = [
     status: "upcoming",
     notionUrl: "https://notion.so",
     location: "Remote (Zoom)",
-    speakers: ["Speakers TBA"],
+    speakers: [{ name: "Speakers TBA" }],
     agenda: [
       "Opening remarks",
       "Keynote presentations",
@@ -96,6 +101,38 @@ export const events: Event[] = [
       "Closing remarks",
     ],
     tags: ["Conference", "Remote", "Networking"],
+  },
+  {
+    id: 2,
+    title: "Automated Discovery at Scale",
+    type: "Speaker Event",
+    description:
+      "Frontier AI models have produced novel insights in mathematics, physics, and other domains. How do we expand these trickles of insight into a firehose?",
+    longDescription:
+      "Join researchers and builders at AGI House SF for an afternoon of talks and discussion on coordinating autonomous researchers at scale to solve the hardest scientific and engineering problems. Frontier AI models have produced novel insights in mathematics, physics, and other domains. How do we expand these trickles of insight into a firehose?",
+    date: "Saturday, April 18, 2026",
+    time: "1:00 PM - 7:00 PM PDT",
+    iconName: "Mic",
+    icon: Mic,
+    color: "amber",
+    status: "upcoming",
+    lumaUrl: "https://luma.com/automateddiscovery",
+    location: "AGI House SF: 170 St. Germain Ave. San Francisco CA 94114",
+    speakers: [
+      { name: "Steven Diamond", topic: "An AlphaGo Moment for Numerical Methods" },
+      { name: "Henrique Assumpcao", topic: "Evolutionary Agents for Scientific Discovery" },
+      { name: "SkyDiscover Team", topic: "A Flexible Framework for AI-Driven Scientific and Algorithmic Discovery", link: "https://skydiscover-ai.github.io/" },
+      { name: "John Fletcher", topic: "The Amazing Economics of AI-Assisted Algorithm Discovery" },
+      { name: "Additional speakers to be announced" },
+    ],
+    agenda: [
+      "1:00 PM Doors open",
+      "1:30 PM Talks begin",
+      "5:00 PM Open discussion",
+      "5:30 PM Dinner and networking",
+      "7:00 PM Close",
+    ],
+    tags: ["Speaker Event", "San Francisco", "AI Research"],
   },
 ];
 

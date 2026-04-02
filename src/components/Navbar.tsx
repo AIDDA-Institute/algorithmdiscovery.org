@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X, Calendar, Linkedin, BookOpen } from "lucide-react";
+import { Search, Menu, X, Calendar, Linkedin, BookOpen, Users, HelpCircle, BarChart3 } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -103,6 +103,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
                 </Link>
               )
             ))}
+            <span className="text-stone-300">|</span>
             <Link
               href="/events"
               className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
@@ -117,6 +118,27 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               <BookOpen className="h-3.5 w-3.5" />
               Resources
             </Link>
+            {/* <Link
+              href="/working-groups"
+              className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
+            >
+              <Users className="h-3.5 w-3.5" />
+              Working Groups
+            </Link> */}
+            <Link
+              href="/research-questions"
+              className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
+            >
+              <HelpCircle className="h-3.5 w-3.5" />
+              Research Questions
+            </Link>
+            {/* <Link
+              href="/benchmarks"
+              className="text-sm text-stone-600 hover:text-stone-900 transition-colors font-normal inline-flex items-center gap-1.5"
+            >
+              <BarChart3 className="h-3.5 w-3.5" />
+              Benchmarks
+            </Link> */}
           </div>
 
           {/* Right side buttons */}
@@ -220,6 +242,27 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             >
               Resources
             </Link>
+            {/* <Link
+              href="/working-groups"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
+            >
+              Working Groups
+            </Link> */}
+            <Link
+              href="/research-questions"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
+            >
+              Research Questions
+            </Link>
+            {/* <Link
+              href="/benchmarks"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-left px-3 py-2 text-sm text-stone-600 hover:text-stone-900 hover:bg-stone-50 rounded-md transition-colors font-normal"
+            >
+              Benchmarks
+            </Link> */}
           </div>
         </div>
       )}

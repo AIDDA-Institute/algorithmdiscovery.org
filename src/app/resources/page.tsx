@@ -21,6 +21,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SignupPopup } from "@/components/SignupPopup";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
+import { HeroAnimation } from "@/components/HeroAnimation";
 
 function getYouTubeVideoId(url: string): string | null {
   const patterns = [
@@ -276,7 +277,7 @@ const tools = [
     url: "https://github.com/liugangcode/deepevolve",
     github: "https://github.com/liugangcode/deepevolve",
     category: "Framework",
-    stars: "10k",
+    stars: "124",
     language: "Python",
     tags: ["coding-agent ", "llm", "multi-agent "],
   },
@@ -423,7 +424,11 @@ export default function ResourcesPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background Animation */}
+        <div className="absolute inset-0 opacity-40">
+          <HeroAnimation />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Left content */}
             <div className="space-y-8">

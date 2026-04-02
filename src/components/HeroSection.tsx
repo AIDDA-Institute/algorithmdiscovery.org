@@ -19,8 +19,13 @@ export function HeroSection({ onOpenSignup }: HeroSectionProps) {
           <div className="space-y-8 w-full max-w-xl flex flex-col items-center sm:items-start">
             <FadeIn delay={0.1} duration={0.7}>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-normal text-stone-900 tracking-tight leading-[1.1] text-center sm:text-left">
-                Institute for <br />
-                <span className="font-light text-stone-400">AI Driven <span className="whitespace-nowrap">Discovery of</span><br />Algorithms</span>
+                <span className="block">Institute for</span>
+
+                <span className="block font-light text-stone-400">
+                  AI Driven <span className="whitespace-nowrap">Discovery of</span>
+                </span>
+
+                <span className="block font-light text-stone-400">Algorithms</span>
               </h1>
             </FadeIn>
 
