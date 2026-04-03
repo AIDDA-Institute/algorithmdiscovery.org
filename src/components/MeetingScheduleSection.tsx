@@ -3,17 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Calendar,
-  Clock,
   ArrowRight,
-  ExternalLink,
-  FileText,
 } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
 import {
-  events,
   colorMap,
   getUpcomingEvents,
   getPastEvents,
@@ -29,16 +24,19 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
   const pastEvents = getPastEvents();
 
   return (
-    <section id="schedule" className="bg-slate-900 py-16 md:py-20 lg:py-24">
+    <section id="schedule" className="bg-[#18212f] py-16 md:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <FadeIn className="mb-12 md:mb-16">
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.24em] text-slate-300">
+            Programming and Events
+          </span>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white tracking-tight">
                 Events Calendar
               </h2>
-              <p className="mt-4 text-lg text-stone-400 max-w-2xl font-normal">
+              <p className="mt-4 text-lg text-slate-300 max-w-2xl font-normal leading-8">
                 Join our conference, reading groups, technical discussions,
                 speaker events, and community gatherings.
               </p>
@@ -47,7 +45,7 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
               <Link href="/events">
                 <Button
                   variant="outline"
-                  className="w-fit rounded-full px-6 py-5 text-sm font-normal border-stone-600 bg-transparent text-white hover:bg-stone-800 hover:text-white transition-colors"
+                  className="w-fit rounded-full px-6 py-5 text-sm font-normal border-white/18 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors"
                 >
                   View All Events
                   <ArrowRight className="h-4 w-4 ml-2" />
@@ -56,7 +54,7 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
               <Button
                 variant="outline"
                 disabled
-                className="w-fit rounded-full px-6 py-5 text-sm font-normal border-stone-700 bg-stone-800/50 text-stone-500 cursor-not-allowed"
+                className="w-fit rounded-full px-6 py-5 text-sm font-normal border-white/10 bg-white/4 text-slate-500 cursor-not-allowed"
               >
                 <Calendar className="h-4 w-4 mr-2" />
                 Subscribe to Calendar
@@ -95,7 +93,7 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
         {/* Upcoming Events Grid */}
         <FadeIn delay={0.15}>
           <h3 className="text-xl font-normal text-white mb-6 flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="w-2 h-2 rounded-full bg-emerald-400" />
             Upcoming Events
           </h3>
         </FadeIn>
@@ -115,15 +113,15 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
         {pastEvents.length > 0 && (
           <>
             <FadeIn delay={0.2}>
-              <h3 className="text-xl font-normal text-stone-400 mb-6 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-stone-500" />
+              <h3 className="text-xl font-normal text-slate-300 mb-6 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-slate-500" />
                 Recent Events
               </h3>
             </FadeIn>
 
             <StaggerContainer
               staggerDelay={0.08}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-60"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-75"
             >
               {pastEvents.map((event) => (
                 <StaggerItem key={event.id}>

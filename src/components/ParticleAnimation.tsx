@@ -14,8 +14,8 @@ function ParticleNetwork() {
   const meshRef = useRef<THREE.Points>(null);
   const linesRef = useRef<THREE.LineSegments>(null);
   
-  const particleCount = 150;
-  const connectionDistance = 2.5;
+  const particleCount = 108;
+  const connectionDistance = 2.15;
   
   // Generate particles
   const { positions, velocities } = useMemo(() => {
@@ -33,9 +33,9 @@ function ParticleNetwork() {
       positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
       positions[i3 + 2] = radius * Math.cos(phi);
       
-      velocities[i3] = (seededRandom(i * 3 + 3) - 0.5) * 0.003;
-      velocities[i3 + 1] = (seededRandom(i * 3 + 4) - 0.5) * 0.003;
-      velocities[i3 + 2] = (seededRandom(i * 3 + 5) - 0.5) * 0.003;
+      velocities[i3] = (seededRandom(i * 3 + 3) - 0.5) * 0.0017;
+      velocities[i3 + 1] = (seededRandom(i * 3 + 4) - 0.5) * 0.0017;
+      velocities[i3 + 2] = (seededRandom(i * 3 + 5) - 0.5) * 0.0017;
     }
     
     return { positions, velocities };
@@ -58,8 +58,8 @@ function ParticleNetwork() {
       posArray[i3 + 1] += velocities[i3 + 1];
       posArray[i3 + 2] += velocities[i3 + 2];
       
-      posArray[i3] += Math.sin(state.clock.elapsedTime * 0.5 + i * 0.1) * 0.002;
-      posArray[i3 + 1] += Math.cos(state.clock.elapsedTime * 0.3 + i * 0.1) * 0.002;
+      posArray[i3] += Math.sin(state.clock.elapsedTime * 0.28 + i * 0.08) * 0.0012;
+      posArray[i3 + 1] += Math.cos(state.clock.elapsedTime * 0.22 + i * 0.08) * 0.0012;
       
       const dist = Math.sqrt(
         posArray[i3] ** 2 + posArray[i3 + 1] ** 2 + posArray[i3 + 2] ** 2
@@ -103,9 +103,9 @@ function ParticleNetwork() {
     }
     
     // Rotate the entire system slowly
-    meshRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+    meshRef.current.rotation.y = state.clock.elapsedTime * 0.024;
     if (linesRef.current) {
-      linesRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+      linesRef.current.rotation.y = state.clock.elapsedTime * 0.024;
     }
   });
   
@@ -119,15 +119,15 @@ function ParticleNetwork() {
     <>
       <points ref={meshRef} geometry={geometry}>
         <pointsMaterial
-          size={0.08}
-          color="#57534e"
+          size={0.075}
+          color="#23485d"
           transparent
-          opacity={0.8}
+          opacity={0.78}
           sizeAttenuation
         />
       </points>
       <lineSegments ref={linesRef} geometry={lineGeometry}>
-        <lineBasicMaterial color="#a8a29e" transparent opacity={0.15} />
+        <lineBasicMaterial color="#688397" transparent opacity={0.22} />
       </lineSegments>
     </>
   );
@@ -144,7 +144,7 @@ function MathFunctionSurface() {
     for (let i = 0; i < positions.length; i += 3) {
       const x = positions[i];
       const y = positions[i + 1];
-      positions[i + 2] = Math.sin(Math.sqrt(x * x + y * y) * 0.5) * 1.2;
+      positions[i + 2] = Math.sin(Math.sqrt(x * x + y * y) * 0.42) * 0.82;
     }
     
     geo.computeVertexNormals();
@@ -153,17 +153,17 @@ function MathFunctionSurface() {
   
   useFrame((state) => {
     if (!meshRef.current) return;
-    meshRef.current.rotation.z = state.clock.elapsedTime * 0.03;
-    meshRef.current.rotation.x = Math.PI / 2 + 0.2;
+    meshRef.current.rotation.z = state.clock.elapsedTime * 0.018;
+    meshRef.current.rotation.x = Math.PI / 2 + 0.13;
   });
   
   return (
     <mesh ref={meshRef} geometry={geometry} position={[0, 0, -8]}>
       <meshBasicMaterial
-        color="#a8a29e"
+        color="#7e95a3"
         wireframe
         transparent
-        opacity={0.2}
+        opacity={0.18}
       />
     </mesh>
   );
@@ -171,7 +171,7 @@ function MathFunctionSurface() {
 
 export function ParticleAnimation() {
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-stone-50 via-white to-stone-100">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(47,91,115,0.22),transparent_42%),linear-gradient(180deg,#f5f8fb_0%,#eaf0f4_100%)]">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 60 }}
         dpr={[1, 2]}

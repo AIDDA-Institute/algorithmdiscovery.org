@@ -80,6 +80,11 @@
   --sidebar-accent-foreground: oklch(0.216 0.006 56.043);
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
+  --institution-ink: #18212f;
+  --institution-muted: #5c6676;
+  --institution-accent: #2f5b73;
+  --institution-line: rgba(24, 33, 47, 0.1);
+  --institution-panel: rgba(255, 255, 255, 0.78);
 }
 
 .dark {
@@ -122,5 +127,53 @@
   }
   body {
     @apply bg-background text-foreground;
+    background:
+      radial-gradient(circle at top left, rgba(47, 91, 115, 0.08), transparent 28%),
+      linear-gradient(180deg, #fbfcfd 0%, #f4f6f8 48%, #fbfcfd 100%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(47, 91, 115, 0.16);
+    color: var(--institution-ink);
+  }
+}
+
+@layer utilities {
+  .page-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .page-shell::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, rgba(24, 33, 47, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(24, 33, 47, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.16), transparent 38%);
+    z-index: -1;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.24em];
+    color: var(--institution-accent);
+    border-color: rgba(47, 91, 115, 0.16);
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .institution-card {
+    border: 1px solid var(--institution-line);
+    background: var(--institution-panel);
+    box-shadow: 0 18px 60px rgba(24, 33, 47, 0.06);
+    backdrop-filter: blur(14px);
+  }
+
+  .institution-heading {
+    color: var(--institution-ink);
+    letter-spacing: -0.04em;
   }
 }

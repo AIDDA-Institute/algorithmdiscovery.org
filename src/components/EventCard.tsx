@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Calendar, Clock, ArrowRight, ExternalLink, FileText } from "lucide-react";
+import { Calendar, Clock, ArrowRight, ExternalLink } from "lucide-react";
 import { Event, colorMap } from "@/data/events";
 
 interface EventCardProps {
@@ -24,7 +24,7 @@ export function EventCard({ event, isPast = false, onOpenSignup }: EventCardProp
 
     return (
         <Card
-            className={`bg-slate-800/50 border-stone-700/50 transition-all duration-300 h-full flex flex-col ${isPast ? "opacity-70 hover:opacity-100 hover:border-stone-600/50 bg-slate-800/30 border-stone-700/30" : "hover:border-stone-600"
+            className={`h-full flex flex-col border-white/10 bg-white/[0.05] shadow-none transition-all duration-300 ${isPast ? "opacity-70 hover:opacity-100 hover:border-white/16 bg-white/[0.03]" : "hover:border-white/18 hover:bg-white/[0.07]"
                 }`}
         >
             <CardContent className="p-6 flex flex-col h-full">
@@ -38,14 +38,14 @@ export function EventCard({ event, isPast = false, onOpenSignup }: EventCardProp
                             {event.type}
                         </span>
                     </div>
-                    <span className={`text-xs font-normal ${isPast ? "text-stone-500" : "text-emerald-400"}`}>
+                    <span className={`text-xs font-normal ${isPast ? "text-stone-500" : "text-emerald-300"}`}>
                         {isPast ? "Completed" : "Upcoming"}
                     </span>
                 </div>
 
                 {/* Title */}
                 <Link href={`/events/${event.id}`}>
-                    <h3 className={`font-normal mb-2 hover:text-emerald-400 transition-colors cursor-pointer ${isPast ? "text-lg text-stone-300" : "text-xl text-white mb-3"}`}>
+                    <h3 className={`font-normal mb-2 underline-offset-4 hover:underline hover:text-emerald-300 transition-colors cursor-pointer ${isPast ? "text-lg text-stone-300" : "text-xl text-white mb-3"}`}>
                         {event.title}
                     </h3>
                 </Link>
@@ -84,20 +84,34 @@ export function EventCard({ event, isPast = false, onOpenSignup }: EventCardProp
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    Register on Luma
+                                    Register
                                     <ExternalLink className="h-3 w-3 ml-1" />
                                 </a>
                             </Button>
                         ) : (
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={onOpenSignup}
-                                className="w-full rounded-full border-stone-600 text-black hover:bg-stone-800 hover:text-white transition-colors text-xs font-normal"
-                            >
-                                Get Notified when Registrations Opens
-                                <ArrowRight className="h-3 w-3 ml-1" />
-                            </Button>
+                            onOpenSignup ? (
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={onOpenSignup}
+                                    className="w-full rounded-full border-white/16 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors text-xs font-normal"
+                                >
+                                    Get Notified When Registration Opens
+                                    <ArrowRight className="h-3 w-3 ml-1" />
+                                </Button>
+                            ) : (
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    asChild
+                                    className="w-full rounded-full border-white/16 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors text-xs font-normal"
+                                >
+                                    <Link href="/?signup=1">
+                                        Get Notified When Registration Opens
+                                        <ArrowRight className="h-3 w-3 ml-1" />
+                                    </Link>
+                                </Button>
+                            )
                         )}
 
                         {/* Calendar Button */}
@@ -116,7 +130,7 @@ export function EventCard({ event, isPast = false, onOpenSignup }: EventCardProp
                                 variant="outline"
                                 size="sm"
                                 asChild
-                                className="w-full rounded-full border-stone-600 text-black hover:bg-stone-800 hover:text-white transition-colors text-xs font-normal"
+                                className="w-full rounded-full border-white/16 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors text-xs font-normal"
                             >
                                 <a href={event.calendarUrl} target="_blank" rel="noopener noreferrer">
                                     <Calendar className="h-3 w-3 mr-1" />

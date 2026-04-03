@@ -100,9 +100,9 @@ export function SignupPopup({ isOpen, onClose }: SignupPopupProps) {
 
       {/* Popup */}
       <FadeIn className="relative w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="overflow-hidden rounded-[1.75rem] border border-stone-200 bg-white shadow-2xl">
           {/* Header */}
-          <div className="bg-stone-50 px-6 py-4 border-b border-stone-100 flex items-center justify-between">
+          <div className="flex items-center justify-between border-b border-stone-100 bg-stone-50 px-6 py-4">
             <h2 className="text-lg font-normal text-stone-900">
               Get Involved
             </h2>
@@ -134,7 +134,7 @@ export function SignupPopup({ isOpen, onClose }: SignupPopupProps) {
                 </p>
                 <Button
                   onClick={handleClose}
-                  className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-8"
+                  className="rounded-full bg-stone-900 px-8 text-white hover:bg-stone-800"
                 >
                   Close
                 </Button>
@@ -191,7 +191,7 @@ export function SignupPopup({ isOpen, onClose }: SignupPopupProps) {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full py-6 text-base font-normal transition-colors disabled:opacity-50"
+                    className="w-full rounded-full bg-stone-900 py-6 text-base font-normal text-white transition-colors hover:bg-stone-800 disabled:opacity-50"
                   >
                     {isLoading ? (
                       <>

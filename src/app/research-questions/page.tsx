@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SignupPopup } from "@/components/SignupPopup";
@@ -10,106 +9,28 @@ import { FadeIn } from "@/components/FadeIn";
 import { HeroAnimation } from "@/components/HeroAnimation";
 import {
   researchQuestions,
-  questionCategories,
-  progressStatuses,
   type ResearchQuestion
 } from "@/data/research-questions";
 import {
   ArrowRight,
   HelpCircle,
-  BookOpen,
-  Mail,
-  Target,
-  Lightbulb,
   ChevronDown,
   ChevronUp,
-  Search,
-  Zap,
-  Beaker,
-  Clock,
-  Users,
   FileText,
-  ExternalLink,
-  MessageSquare
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-function ProgressBadge({ status }: { status: ResearchQuestion["progressStatus"] }) {
-  const statusMap: Record<string, { color: string; icon: React.ReactNode; label: string }> = {
-    "exploratory": { 
-      color: "bg-amber-100 text-amber-700", 
-      icon: <Lightbulb className="h-3 w-3" />,
-      label: "Exploratory"
-    },
-    "active": { 
-      color: "bg-emerald-100 text-emerald-700", 
-      icon: <Beaker className="h-3 w-3" />,
-      label: "Active Research"
-    },
-    "advanced": { 
-      color: "bg-blue-100 text-blue-700", 
-      icon: <Zap className="h-3 w-3" />,
-      label: "Advanced"
-    },
-    "nearing-resolution": { 
-      color: "bg-violet-100 text-violet-700", 
-      icon: <Target className="h-3 w-3" />,
-      label: "Nearing Resolution"
-    },
-  };
-
-  const config = statusMap[status];
-
-  return (
-    <span className={cn(
-      "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium",
-      config.color
-    )}>
-      {config.icon}
-      {config.label}
-    </span>
-  );
-}
-
-function ImpactBadge({ impact }: { impact: string }) {
-  const colorMap: Record<string, string> = {
-    "High": "bg-emerald-100 text-emerald-700",
-    "Critical": "bg-rose-100 text-rose-700",
-    "Industry": "bg-blue-100 text-blue-700",
-    "Emerging": "bg-amber-100 text-amber-700",
-    "Safety": "bg-red-100 text-red-700",
-  };
-
-  const iconMap: Record<string, React.ReactNode> = {
-    "High": <Zap className="h-3 w-3" />,
-    "Critical": <Target className="h-3 w-3" />,
-    "Emerging": <Lightbulb className="h-3 w-3" />,
-    "Industry": <Beaker className="h-3 w-3" />,
-    "Safety": <Target className="h-3 w-3" />,
-  };
-
-  return (
-    <span className={cn(
-      "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium",
-      colorMap[impact] || "bg-stone-100 text-stone-700"
-    )}>
-      {iconMap[impact]}
-      {impact}
-    </span>
-  );
-}
 
 function ResearchQuestionCard({ question, index }: { question: ResearchQuestion; index: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <FadeIn delay={0.1 + index * 0.08}>
-      <div className="group bg-white border border-stone-200 rounded-2xl overflow-hidden hover:border-stone-300 hover:shadow-lg transition-all duration-300 flex flex-col">
+      <div className="group institution-card flex flex-col overflow-hidden rounded-[1.75rem] transition-all duration-300 hover:border-stone-300">
         {/* Header */}
-        <div className="p-6 border-b border-stone-100 flex-1">
+        <div className="flex-1 border-b border-stone-100 p-6">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex-1">
-              <h3 className="text-xl font-medium text-stone-900 mb-3 group-hover:text-blue-700 transition-colors leading-snug">
+              <h3 className="mb-3 text-xl font-medium leading-snug text-stone-900 transition-colors group-hover:text-[#2f5b73]">
                 {question.question}
               </h3>
               <p className="text-stone-600 text-sm leading-relaxed line-clamp-2">{question.shortDescription}</p>
@@ -165,8 +86,8 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
           <div className="overflow-hidden">
             {/* Combined Description and Motivation */}
             <div className="p-6">
-              <h4 className="text-sm font-medium text-stone-900 mb-3 flex items-center gap-2">
-                <FileText className="h-4 w-4 text-blue-600" />
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-medium text-stone-900">
+                <FileText className="h-4 w-4 text-[#2f5b73]" />
                 About This Question
               </h4>
               <p className="text-sm text-stone-600 leading-relaxed mb-4">{question.fullDescription}</p>
@@ -231,7 +152,7 @@ function ResearchQuestionCard({ question, index }: { question: ResearchQuestion;
         {/* Expand Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full py-3 flex items-center justify-center gap-2 text-sm text-stone-500 hover:text-stone-700 hover:bg-stone-50 transition-colors border-t border-stone-100"
+          className="flex w-full items-center justify-center gap-2 border-t border-stone-100 py-3 text-sm text-stone-500 transition-colors hover:bg-white/60 hover:text-stone-700"
         >
           {isExpanded ? (
             <>
@@ -254,17 +175,18 @@ export default function ResearchQuestionsPage() {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
 
   return (
-    <main className="min-h-screen">
+    <main className="page-shell min-h-screen">
       <Navbar onOpenSignup={() => setIsSignupOpen(true)} />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-white overflow-hidden">
+      <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20">
         {/* Background Animation */}
-        <div className="absolute inset-0 opacity-40">
+        <div className="absolute inset-0 opacity-70">
           <HeroAnimation />
         </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,255,255,0.62),transparent_28%),linear-gradient(180deg,rgba(251,252,253,0.18),rgba(247,249,251,0.42))]" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             <FadeIn delay={0.1}>
               <Link
                 href="/"
@@ -276,7 +198,8 @@ export default function ResearchQuestionsPage() {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight leading-[1.1] mb-6">
+              <span className="section-eyebrow mb-5">Open Problems</span>
+              <h1 className="institution-heading mb-6 text-4xl font-normal leading-[1.1] sm:text-5xl lg:text-6xl">
                 Open Research Questions
               </h1>
             </FadeIn>
@@ -304,20 +227,25 @@ export default function ResearchQuestionsPage() {
       </section>
 
       {/* Research Questions Section */}
-      <section className="py-16 md:py-20 lg:py-24 bg-stone-50">
+      <section className="py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <FadeIn>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+            <div className="mb-10">
+              <span className="section-eyebrow mb-5">Current Program of Work</span>
+              <div className="mb-4 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100">
                 <HelpCircle className="h-5 w-5 text-violet-700" />
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+              <h2 className="institution-heading text-3xl sm:text-4xl lg:text-5xl font-normal">
                 Active Research Questions
               </h2>
+              </div>
+              <p className="max-w-3xl text-stone-600 leading-8">
+                Questions the institute is using to organize discussion, collaboration,
+                and future technical work.
+              </p>
             </div>
-            <br></br>
-            {/* <p className="text-stone-500 mb-12 ml-[52px]">Click on any question to explore details and related work</p> */}
           </FadeIn>
 
           {/* Categories & Progress Status - Commented Out */}

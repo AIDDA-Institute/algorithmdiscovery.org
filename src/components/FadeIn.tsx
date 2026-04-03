@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, Variants } from "framer-motion";
+import { motion, useInView, useReducedMotion, Variants } from "framer-motion";
 import { useRef, ReactNode } from "react";
 
 interface FadeInProps {
@@ -24,6 +24,7 @@ export function FadeIn({
 }: FadeInProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: "-50px" });
+  const reduceMotion = useReducedMotion();
 
   const getInitialPosition = () => {
     switch (direction) {
@@ -45,14 +46,14 @@ export function FadeIn({
   const variants: Variants = {
     hidden: {
       opacity: 0,
-      ...getInitialPosition(),
+      ...(reduceMotion ? {} : getInitialPosition()),
     },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
       transition: {
-        duration,
+        duration: reduceMotion ? 0.01 : duration,
         delay,
         ease: [0.25, 0.1, 0.25, 1], // Subtle ease-out curve
       },
@@ -85,12 +86,13 @@ export function StaggerContainer({
 }: StaggerContainerProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const reduceMotion = useReducedMotion();
 
   const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: staggerDelay,
+        staggerChildren: reduceMotion ? 0 : staggerDelay,
       },
     },
   };
@@ -114,16 +116,17 @@ interface StaggerItemProps {
 }
 
 export function StaggerItem({ children, className = "" }: StaggerItemProps) {
+  const reduceMotion = useReducedMotion();
   const itemVariants: Variants = {
     hidden: {
       opacity: 0,
-      y: 20,
+      y: reduceMotion ? 0 : 20,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: reduceMotion ? 0.01 : 0.5,
         ease: [0.25, 0.1, 0.25, 1],
       },
     },

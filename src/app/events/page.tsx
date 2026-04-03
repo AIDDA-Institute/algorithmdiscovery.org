@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Calendar, ChevronLeft, Users, BookOpen, Mic } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { getUpcomingEvents, getPastEvents, colorMap } from "@/data/events";
@@ -26,14 +25,15 @@ export default function EventsPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-900">
+    <main className="page-shell min-h-screen bg-[#18212f]">
       {/* Header Section */}
-      <section className="pt-24 pb-12 md:pt-32 md:pb-16">
+      <section className="relative overflow-hidden pt-24 pb-12 md:pt-32 md:pb-16">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(120,160,185,0.16),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent)]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-stone-400 hover:text-white transition-colors mb-8"
+              className="mb-8 inline-flex items-center gap-2 text-slate-200 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               <ChevronLeft className="h-4 w-4" />
               <span className="text-sm font-normal">Back to Home</span>
@@ -41,11 +41,14 @@ export default function EventsPage() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="max-w-3xl">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-white tracking-tight mb-6">
+            <div className="max-w-4xl">
+              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/6 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.24em] text-slate-300">
+                Programming and Events
+              </span>
+              <h1 className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white">
                 Events Calendar
               </h1>
-              <p className="text-lg sm:text-xl text-stone-400 font-normal leading-relaxed">
+              <p className="max-w-3xl text-lg sm:text-xl font-normal leading-8 text-slate-300">
                 Join our conference, reading groups, technical discussions,
                 speaker events, and community gatherings. Connect with
                 researchers and practitioners in AI Driven Discovery of Algorithms.
@@ -59,7 +62,8 @@ export default function EventsPage() {
       <section className="pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn delay={0.15}>
-            <div className="flex flex-wrap gap-3">
+            <div className="rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
+              <div className="flex flex-wrap gap-3">
               {legendItems.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -76,6 +80,7 @@ export default function EventsPage() {
                   </div>
                 );
               })}
+              </div>
             </div>
           </FadeIn>
         </div>
@@ -86,9 +91,9 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn delay={0.2}>
             <h2 className="text-2xl font-normal text-white mb-8 flex items-center gap-3">
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
               Upcoming Events
-              <span className="text-sm text-stone-500 font-normal ml-2">
+              <span className="ml-2 text-sm font-normal text-slate-500">
                 ({upcomingCount})
               </span>
             </h2>
@@ -98,8 +103,8 @@ export default function EventsPage() {
             <EventsGrid section="upcoming" />
           ) : (
             <FadeIn delay={0.25}>
-              <div className="text-center py-16 bg-slate-800/30 rounded-xl border border-stone-700/30">
-                <Calendar className="h-12 w-12 text-stone-600 mx-auto mb-4" />
+              <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] py-16 text-center">
+                <Calendar className="mx-auto mb-4 h-12 w-12 text-slate-500" />
                 <h3 className="text-lg font-normal text-stone-300 mb-2">
                   No upcoming events
                 </h3>
@@ -114,13 +119,13 @@ export default function EventsPage() {
 
       {/* Past Events Section */}
       {pastCount > 0 && (
-        <section className="pb-16 md:pb-24 border-t border-stone-800">
+        <section className="border-t border-white/10 pb-16 md:pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
             <FadeIn>
-              <h2 className="text-2xl font-normal text-stone-300 mb-8 flex items-center gap-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-stone-500" />
+              <h2 className="mb-8 flex items-center gap-3 text-2xl font-normal text-slate-300">
+                <div className="h-2.5 w-2.5 rounded-full bg-slate-500" />
                 Past Events
-                <span className="text-sm text-stone-500 font-normal ml-2">
+                <span className="ml-2 text-sm font-normal text-slate-500">
                   ({pastCount})
                 </span>
               </h2>
@@ -155,15 +160,15 @@ export default function EventsPage() {
       </section> */}
 
       {/* Simple Footer */}
-      <footer className="border-t border-stone-800 py-8">
+      <footer className="border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-sm text-stone-500">
+            <div className="text-sm text-slate-500">
               &copy; 2026 AIDDA Institute
             </div>
             <Link
               href="/"
-              className="text-sm text-stone-400 hover:text-white transition-colors"
+              className="text-sm text-slate-300 underline-offset-4 transition-colors hover:text-white hover:underline"
             >
               Back to Home
             </Link>

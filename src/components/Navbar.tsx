@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Search, Menu, X, Calendar, Linkedin, BookOpen, Users, HelpCircle, BarChart3 } from "lucide-react";
+import { Menu, X, Calendar, BookOpen, HelpCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,37 +18,25 @@ const navLinks = [
   // { label: "Apply", href: "#apply" },
 ];
 
-const pageLinks = [
-  { label: "Events", href: "/events" },
-];
-
 interface NavbarProps {
   onOpenSignup: () => void;
 }
 
 export function Navbar({ onOpenSignup }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-
-      setLastScrollY(currentScrollY);
+      setIsScrolled(window.scrollY > 16);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const scrollToSection = (href: string) => {
     if (isHomePage) {
@@ -62,8 +50,11 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-100 transition-transform duration-300 ease-in-out ${isVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        isScrolled
+          ? "border-stone-200/80 bg-white/88 shadow-[0_10px_40px_rgba(15,23,42,0.06)] backdrop-blur-xl"
+          : "border-transparent bg-white/72 backdrop-blur-md"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -73,12 +64,12 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
               href="/"
               className="flex items-center gap-3 text-lg font-medium text-stone-900 tracking-tight hover:text-stone-700 transition-colors"
             >
-              {/* <img
-                src="/LOGO_TIG_PICTURE_CLEAN_OFFWHITE.svg"
-                alt="Logo"
-                className="h-10 w-auto brightness-0"
-              /> */}
-              <span>AIDDA <span className="font-light text-stone-400">Institute</span></span>
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-200 bg-white text-[11px] font-medium tracking-[0.24em] text-stone-700 shadow-sm">
+                AI
+              </span>
+              <span>
+                AIDDA <span className="font-light text-stone-500">Institute</span>
+              </span>
             </Link>
           </div>
 
@@ -181,13 +172,10 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
             </div>
             <Button
               onClick={onOpenSignup}
-              className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-6 text-sm font-normal transition-colors"
+              className="rounded-full border border-stone-300 bg-stone-900 px-6 text-sm font-normal text-white shadow-sm transition-colors hover:bg-stone-800"
             >
               Get Involved
             </Button>
-            {/* <button className="p-2.5 rounded-full bg-stone-900 text-white hover:bg-stone-800 transition-colors">
-              <Search className="h-4 w-4" />
-            </button> */}
 
             {/* Mobile menu button */}
             <button
@@ -206,7 +194,7 @@ export function Navbar({ onOpenSignup }: NavbarProps) {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-stone-200">
+        <div className="lg:hidden border-t border-stone-200 bg-white/95 backdrop-blur-xl">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navLinks.map((link) => (
               isHomePage ? (

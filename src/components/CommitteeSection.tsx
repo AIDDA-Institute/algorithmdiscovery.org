@@ -1,7 +1,6 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
-import { Globe } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
 
 const committeeMembers = [
@@ -29,67 +28,55 @@ const committeeMembers = [
 
 export function CommitteeSection() {
   return (
-    <section id="committee" className="py-16 md:py-20 lg:py-24 bg-white">
+    <section id="committee" className="py-16 md:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight mb-4">
+          <span className="section-eyebrow mb-6">Leadership and Governance</span>
+          <h2 className="institution-heading text-3xl sm:text-4xl lg:text-5xl font-normal mb-4">
             Committee Members
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p className="text-stone-600 mb-12 font-normal">
-            The AIDDA Institute is seeking additional committee members. If you would like to get involved, reach out to us at{" "}
-            <a
-              href="mailto:committee@algorithmdiscovery.org"
-              className="text-stone-900 underline underline-offset-2 hover:text-stone-700"
-            >
-              committee@algorithmdiscovery.org
-            </a>
-            .
-          </p>
+          <div className="institution-card mb-12 rounded-[2rem] p-6 md:p-8">
+            <p className="max-w-3xl text-stone-600 font-normal leading-8">
+              The AIDDA Institute is seeking additional committee members with strong
+              research or technical program experience in automated algorithm discovery.
+              If you would like to get involved, contact{" "}
+              <a
+                href="mailto:committee@algorithmdiscovery.org"
+                className="text-stone-900 underline underline-offset-2 hover:text-stone-700"
+              >
+                committee@algorithmdiscovery.org
+              </a>
+              .
+            </p>
+          </div>
         </FadeIn>
 
-        <StaggerContainer staggerDelay={0.12} className="space-y-0">
-          {committeeMembers.map((member, index) => (
+        <StaggerContainer staggerDelay={0.12} className="grid gap-6 lg:grid-cols-2">
+          {committeeMembers.map((member) => (
             <StaggerItem key={member.name}>
-              <div>
-                <div className="py-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
-                    {/* Name and email column */}
-                    <div className="md:col-span-1">
-                      <h3 className="text-xl font-normal text-stone-900 mb-2">
-                        {member.name}
-                      </h3>
-                      <div className="flex items-center gap-2">
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="text-sm text-stone-600 underline underline-offset-2 hover:text-stone-900 font-normal"
-                        >
-                          {member.email}
-                        </a>
-                        <a
-                          href="#"
-                          className="text-stone-400 hover:text-stone-700 transition-colors"
-                          aria-label="Website"
-                        >
-                          <Globe className="h-4 w-4" />
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Bio column */}
-                    <div className="md:col-span-2">
-                      <p className="text-stone-700 leading-relaxed font-normal">
-                        {member.bio}
-                      </p>
-                    </div>
+              <article className="institution-card h-full rounded-[2rem] p-6 md:p-8">
+                <div className="flex h-full flex-col">
+                  <div className="mb-5">
+                    <h3 className="text-xl font-normal text-stone-900 mb-2">
+                      {member.name}
+                    </h3>
+                    <a
+                      href={`mailto:${member.email}`}
+                      className="inline-flex items-center gap-2 text-sm text-stone-600 underline underline-offset-2 hover:text-stone-900 font-normal"
+                    >
+                      <Mail className="h-4 w-4" />
+                      {member.email}
+                    </a>
                   </div>
+
+                  <p className="text-stone-700 leading-7 font-normal">
+                    {member.bio}
+                  </p>
                 </div>
-                {index < committeeMembers.length - 1 && (
-                  <Separator className="bg-stone-200" />
-                )}
-              </div>
+              </article>
             </StaggerItem>
           ))}
         </StaggerContainer>

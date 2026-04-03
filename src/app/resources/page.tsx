@@ -4,37 +4,18 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
-  BookOpen,
   Wrench,
   FileText,
-  Video,
-  Users,
   ArrowRight,
   ExternalLink,
   Github,
-  Calendar,
-  ArrowUpRight
 } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SignupPopup } from "@/components/SignupPopup";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
+import { FadeIn } from "@/components/FadeIn";
 import { HeroAnimation } from "@/components/HeroAnimation";
-
-function getYouTubeVideoId(url: string): string | null {
-  const patterns = [
-    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s?]+)/,
-    /youtube\.com\/watch\?.*v=([^&\s]+)/,
-  ];
-  
-  for (const pattern of patterns) {
-    const match = url.match(pattern);
-    if (match) return match[1];
-  }
-  return null;
-}
 
 // Publications & Articles
 const publications = [
@@ -203,32 +184,6 @@ const publications = [
 
 ];
 
-// Guides
-const guides = [
-  {
-    type: "youtube" as const,
-    title: "OpenEvolve: Towards Open Evolutionary AI Agents",
-    channelName: "John Snow Labs",
-    date: "October 2025",
-    videoUrl: "https://www.youtube.com/watch?v=mWBT-szUutI",
-  },
-  {
-    type: "youtube" as const,
-    title: "FH #277 Open Evolve: Towards Open Evolutionary Agents",
-    channelName: "NUS Hackers",
-    date: "August 2025",
-    videoUrl: "https://www.youtube.com/watch?v=uRPXxNuTv3M",
-  },
-  {
-    type: "website" as const,
-    title: "EvoVisual",
-    description: "Dive into the fascinating world of evolutionary computation. EvoVisual helps you visualize and understand key algorithms and concepts.",
-    url: "https://evovisual-advanced-evolutionary-concepts-577160257370.us-west1.run.app/",
-    image: "/evovisual.png",
-    date: "Documentation",
-  },
-];
-
 // Tools
 const tools = [
   {
@@ -363,73 +318,24 @@ const tools = [
   },
 ];
 
-// News
-const newsItems = [
-  {
-    title: "New Benchmark Released for Neural Algorithm Discovery",
-    tag: "NEWS",
-    date: "March 10, 2026",
-    summary: "AIDDA Institute releases comprehensive benchmark for evaluating neural algorithm discovery systems, enabling fair comparison across approaches.",
-    url: "#",
-    image: "/openevolve.png",
-  },
-  {
-    title: "Workshop on AI-Driven Discovery of Algorithms Announced",
-    tag: "EVENT",
-    date: "February 19, 2026",
-    summary: "Join us for our annual workshop bringing together researchers from academia and industry to share latest advances.",
-    url: "#",
-    image: "/openevolve.png",
-  },
-  {
-    title: "Breakthrough in Automated Sorting Algorithm Discovery",
-    tag: "RESEARCH",
-    date: "February 12, 2026",
-    summary: "Researchers discover new sorting algorithm with improved cache efficiency using deep learning and evolutionary search.",
-    url: "#",
-    image: "/openevolve.png",
-  },
-];
-
-// Community Resources
-const communityResources = [
-  {
-    title: "AIDDA Reading Group",
-    description: "Weekly discussions on latest papers in AI-driven algorithm discovery.",
-    icon: BookOpen,
-    url: "/events",
-  },
-  {
-    title: "Discord Community",
-    description: "Join our Discord server to connect with researchers and practitioners.",
-    icon: Users,
-    url: "#",
-  },
-  {
-    title: "YouTube Channel",
-    description: "Recorded talks, tutorials, and workshop presentations.",
-    icon: Video,
-    url: "#",
-  },
-];
-
 export default function ResourcesPage() {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [showAllPublications, setShowAllPublications] = useState(false);
   const [showAllTools, setShowAllTools] = useState(false);
 
   return (
-    <main className="min-h-screen">
+    <main className="page-shell min-h-screen">
       <Navbar onOpenSignup={() => setIsSignupOpen(true)} />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-white overflow-hidden">
+      <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
         {/* Background Animation */}
-        <div className="absolute inset-0 opacity-40">
+        <div className="absolute inset-0 opacity-70">
           <HeroAnimation />
         </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_14%_18%,rgba(255,255,255,0.62),transparent_28%),linear-gradient(180deg,rgba(251,252,253,0.18),rgba(247,249,251,0.42))]" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="max-w-5xl">
             {/* Left content */}
             <div className="space-y-8">
               <FadeIn delay={0.1}>
@@ -443,7 +349,8 @@ export default function ResourcesPage() {
               </FadeIn>
 
               <FadeIn delay={0.15}>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal text-stone-900 tracking-tight leading-[1.1]">
+                <span className="section-eyebrow mb-5">Knowledge Base</span>
+                <h1 className="institution-heading text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.1]">
                   Resources
                 </h1>
               </FadeIn>
@@ -459,62 +366,40 @@ export default function ResourcesPage() {
                 <div className="flex flex-wrap gap-3 pt-2">
                   <Button
                     onClick={() => setIsSignupOpen(true)}
-                    className="bg-emerald-100/80 hover:bg-emerald-200/80 text-emerald-900 border-0 rounded-full px-6 py-5 text-sm font-normal transition-colors"
+                    className="rounded-full bg-stone-900 px-6 py-5 text-sm font-normal text-white transition-colors hover:bg-stone-800"
                   >
                     Get Involved
                   </Button>
                 </div>
               </FadeIn>
             </div>
-
-            {/* Right side - decorative */}
-            {/* <FadeIn delay={0.3} direction="left" className="hidden lg:block">
-              <div className="relative">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-4">
-                    <div className="w-full aspect-square rounded-2xl bg-blue-100 flex items-center justify-center">
-                      <FileText className="h-12 w-12 text-blue-600" />
-                    </div>
-                    <div className="w-full aspect-square rounded-2xl bg-emerald-100 flex items-center justify-center">
-                      <BookOpen className="h-12 w-12 text-emerald-600" />
-                    </div>
-                  </div>
-                  <div className="space-y-4 pt-8">
-                    <div className="w-full aspect-square rounded-2xl bg-violet-100 flex items-center justify-center">
-                      <Wrench className="h-12 w-12 text-violet-600" />
-                    </div>
-                    <div className="w-full aspect-square rounded-2xl bg-amber-100 flex items-center justify-center">
-                      <Newspaper className="h-12 w-12 text-amber-600" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </FadeIn> */}
           </div>
         </div>
       </section>
 
       {/* Publications & Articles */}
-      <section className="py-16 md:py-20 lg:py-24 bg-stone-50">
+      <section className="py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="flex items-center gap-3 mb-12">
-              <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+            <div className="mb-12">
+              <span className="section-eyebrow mb-5">Papers and Articles</span>
+              <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100">
                 <FileText className="h-5 w-5 text-blue-700" />
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+              <h2 className="institution-heading text-3xl sm:text-4xl lg:text-5xl font-normal">
                 Publications & Articles
               </h2>
+              </div>
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-0">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
             {(showAllPublications ? publications : publications.slice(0, 6)).map((item, index) => (
               <FadeIn key={item.title} delay={0.1 + index * 0.08}>
-                <div className="group border-t border-stone-300 hover:border-blue-400 transition-colors">
-                  <div className="flex gap-5 py-6">
-                    {/* Left - Content */}
-                    <div className="flex-1 min-w-0">
+                <div className="group institution-card flex h-full flex-col rounded-[1.75rem] p-5 transition-colors">
+                  <div className="flex h-full flex-col gap-5">
+                    <div className="min-w-0">
                       <div className="flex items-center gap-2 mb-2">
                         {item.kind === "paper" ? (
                           <>
@@ -544,28 +429,37 @@ export default function ResourcesPage() {
                           </>
                         )}
                       </div>
-                      <h3 className="text-lg font-normal text-stone-900 mb-2 group-hover:text-blue-700 transition-colors leading-snug">
+                      <h3 className="text-lg font-normal text-stone-900 mb-2 group-hover:text-[#2f5b73] transition-colors leading-snug">
                         <a href={item.url} target="_blank" rel="noopener noreferrer">
                           {item.title}
                         </a>
                       </h3>
-                      {item.kind === "article" && item.description && (
-                        <p className="text-sm text-stone-600 leading-relaxed line-clamp-2">
-                          {item.description}
-                        </p>
+                      <p className="text-sm text-stone-600 leading-relaxed">
+                        {item.kind === "article" && item.description
+                          ? item.description
+                          : "Primary source covering methods, results, or frameworks relevant to automated algorithm discovery."}
+                      </p>
+                    </div>
+
+                    <div className="mt-auto">
+                      {item.kind === "article" && item.image ? (
+                        <div className="relative h-36 overflow-hidden rounded-[1.2rem] bg-stone-100">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex items-center justify-between rounded-[1.2rem] border border-stone-200 bg-white/70 px-4 py-3">
+                          <span className="text-xs font-medium uppercase tracking-[0.18em] text-stone-500">
+                            External publication
+                          </span>
+                          <ExternalLink className="h-4 w-4 text-stone-400" />
+                        </div>
                       )}
                     </div>
-                    {/* Right - Image (only for articles) */}
-                    {item.kind === "article" && item.image && (
-                      <div className="relative w-32 h-24 md:w-40 md:h-28 rounded-lg overflow-hidden bg-stone-100 flex-shrink-0">
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      </div>
-                    )}
                   </div>
                 </div>
               </FadeIn>
@@ -683,23 +577,26 @@ export default function ResourcesPage() {
       </section> */}
 
       {/* Tools & Frameworks */}
-      <section className="py-16 md:py-20 lg:py-24 bg-stone-50">
+      <section className="py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="flex items-center gap-3 mb-12">
-              <div className="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+            <div className="mb-12">
+              <span className="section-eyebrow mb-5">Tooling Landscape</span>
+              <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100">
                 <Wrench className="h-5 w-5 text-violet-700" />
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-900 tracking-tight">
+              <h2 className="institution-heading text-3xl sm:text-4xl lg:text-5xl font-normal">
                 Tools & Frameworks
               </h2>
+              </div>
             </div>
           </FadeIn>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {(showAllTools ? tools : tools.slice(0, 6)).map((tool, index) => (
               <FadeIn key={tool.name} delay={0.05 * (index % 6)}>
-                <div className="bg-white border border-stone-200 hover:border-violet-300 transition-all rounded-xl p-6 h-full group shadow-sm">
+                <div className="institution-card h-full rounded-[1.75rem] p-6 transition-all group hover:border-violet-300">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-2">

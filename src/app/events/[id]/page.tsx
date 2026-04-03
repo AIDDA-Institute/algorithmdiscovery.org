@@ -12,7 +12,6 @@ import {
   ChevronLeft,
   ExternalLink,
   FileText,
-  ArrowRight,
   Tag,
   CheckCircle,
 } from "lucide-react";
@@ -71,9 +70,10 @@ export default async function EventPage({ params }: EventPageProps) {
     event.time.includes("TBD");
 
   return (
-    <main className="min-h-screen bg-slate-900">
+    <main className="page-shell min-h-screen bg-[#18212f]">
       {/* Header Section */}
-      <section className="pt-24 pb-8 md:pt-32 md:pb-12">
+      <section className="relative overflow-hidden pt-24 pb-8 md:pt-32 md:pb-12">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(120,160,185,0.14),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent)]" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -90,7 +90,6 @@ export default async function EventPage({ params }: EventPageProps) {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            {/* Event Type Badge */}
             <div
               className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${colors.lightBg} border ${colors.border} mb-6`}
             >
@@ -100,19 +99,19 @@ export default async function EventPage({ params }: EventPageProps) {
               </span>
               {event.status === "upcoming" && (
                 <>
-                  <span className="text-stone-600 mx-1">|</span>
-                  <span className="text-xs text-emerald-400 font-normal">
+                  <span className="mx-1 text-stone-600">|</span>
+                  <span className="text-xs font-normal text-emerald-400">
                     Upcoming
                   </span>
                 </>
               )}
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white tracking-tight mb-6">
+            <h1 className="mb-6 max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white">
               {event.title}
             </h1>
 
-            <p className="text-lg sm:text-xl text-stone-400 font-normal leading-relaxed">
+            <p className="max-w-3xl text-lg sm:text-xl font-normal leading-8 text-slate-300">
               {event.description}
             </p>
           </FadeIn>
@@ -123,27 +122,27 @@ export default async function EventPage({ params }: EventPageProps) {
       <section className="pb-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn delay={0.15}>
-            <Card className="bg-slate-800/50 border-stone-700/50">
+            <Card className="border-white/10 bg-white/[0.05] shadow-none">
               <CardContent className="p-6 md:p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Date */}
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-stone-800/50">
-                      <Calendar className="h-5 w-5 text-stone-400" />
+                    <div className="rounded-xl bg-white/[0.06] p-3">
+                      <Calendar className="h-5 w-5 text-slate-400" />
                     </div>
                     <div>
-                      <p className="text-sm text-stone-500 mb-1">Date</p>
+                      <p className="mb-1 text-sm text-slate-500">Date</p>
                       <p className="text-white font-normal">{event.date}</p>
                     </div>
                   </div>
 
                   {/* Time */}
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-stone-800/50">
-                      <Clock className="h-5 w-5 text-stone-400" />
+                    <div className="rounded-xl bg-white/[0.06] p-3">
+                      <Clock className="h-5 w-5 text-slate-400" />
                     </div>
                     <div>
-                      <p className="text-sm text-stone-500 mb-1">Time</p>
+                      <p className="mb-1 text-sm text-slate-500">Time</p>
                       <p className="text-white font-normal">{event.time}</p>
                     </div>
                   </div>
@@ -151,11 +150,11 @@ export default async function EventPage({ params }: EventPageProps) {
                   {/* Location */}
                   {event.location && (
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-xl bg-stone-800/50">
-                        <MapPin className="h-5 w-5 text-stone-400" />
+                      <div className="rounded-xl bg-white/[0.06] p-3">
+                        <MapPin className="h-5 w-5 text-slate-400" />
                       </div>
                       <div>
-                        <p className="text-sm text-stone-500 mb-1">Location</p>
+                        <p className="mb-1 text-sm text-slate-500">Location</p>
                         <p className="text-white font-normal">
                           {event.location}
                         </p>
@@ -165,11 +164,11 @@ export default async function EventPage({ params }: EventPageProps) {
 
                   {/* Status */}
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-stone-800/50">
-                      <CheckCircle className="h-5 w-5 text-stone-400" />
+                    <div className="rounded-xl bg-white/[0.06] p-3">
+                      <CheckCircle className="h-5 w-5 text-slate-400" />
                     </div>
                     <div>
-                      <p className="text-sm text-stone-500 mb-1">Status</p>
+                      <p className="mb-1 text-sm text-slate-500">Status</p>
                       <p
                         className={`font-normal ${event.status === "upcoming"
                             ? "text-emerald-400"
@@ -184,7 +183,7 @@ export default async function EventPage({ params }: EventPageProps) {
                   </div>
                 </div>
 
-                <Separator className="my-6 bg-stone-700/50" />
+                <Separator className="my-6 bg-white/10" />
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -192,7 +191,7 @@ export default async function EventPage({ params }: EventPageProps) {
                     <Button
                       variant="outline"
                       asChild
-                      className="rounded-full border-stone-600 bg-transparent text-white hover:bg-stone-800 hover:text-white transition-colors font-normal"
+                      className="rounded-full border-white/16 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors font-normal"
                     >
                       <a
                         href={event.calendarUrl}
@@ -210,7 +209,7 @@ export default async function EventPage({ params }: EventPageProps) {
                     <Button
                       variant="outline"
                       asChild
-                      className="rounded-full border-stone-600 bg-transparent text-white hover:bg-stone-800 hover:text-white transition-colors font-normal"
+                      className="rounded-full border-white/16 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors font-normal"
                     >
                       <a
                         href={event.notionUrl}
@@ -228,7 +227,7 @@ export default async function EventPage({ params }: EventPageProps) {
                     <Button
                       variant="outline"
                       asChild
-                      className="rounded-full border-stone-600 bg-transparent text-white hover:bg-stone-800 hover:text-white transition-colors font-normal"
+                      className="rounded-full border-white/16 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors font-normal"
                     >
                       <a
                         href={event.lumaUrl}
@@ -260,13 +259,15 @@ export default async function EventPage({ params }: EventPageProps) {
         <section className="pb-12">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <FadeIn delay={0.2}>
-              <h2 className="text-2xl font-normal text-white mb-6">
+              <h2 className="mb-6 text-2xl font-normal text-white">
                 About This Event
               </h2>
+              <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6 md:p-8">
               <div className="prose prose-invert prose-stone max-w-none">
                 <p className="text-stone-400 leading-relaxed whitespace-pre-line">
                   {event.longDescription}
                 </p>
+              </div>
               </div>
             </FadeIn>
           </div>
@@ -286,7 +287,7 @@ export default async function EventPage({ params }: EventPageProps) {
                 {event.speakers.map((speaker, index) => (
                   <div
                     key={index}
-                    className="flex flex-col gap-1 p-4 bg-slate-800/30 rounded-xl border border-stone-700/30"
+                    className="flex flex-col gap-1 rounded-[1.4rem] border border-white/10 bg-white/[0.04] p-5"
                   >
                     <div className="flex items-center gap-2">
                       {speaker.link ? (
@@ -326,9 +327,9 @@ export default async function EventPage({ params }: EventPageProps) {
                 {event.agenda.map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-4 p-4 bg-slate-800/30 rounded-xl border border-stone-700/30"
+                    className="flex items-start gap-4 rounded-[1.4rem] border border-white/10 bg-white/[0.04] p-5"
                   >
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500/18">
                       <span className="text-sm text-emerald-400 font-normal">
                         {index + 1}
                       </span>
@@ -355,7 +356,7 @@ export default async function EventPage({ params }: EventPageProps) {
                 {event.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-4 py-2 rounded-full bg-stone-800/50 text-stone-400 text-sm font-normal border border-stone-700/50"
+                    className="rounded-full border border-white/12 bg-white/[0.05] px-4 py-2 text-sm font-normal text-slate-300"
                   >
                     {tag}
                   </span>
@@ -370,7 +371,7 @@ export default async function EventPage({ params }: EventPageProps) {
       <section className="pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn delay={0.4}>
-            <Separator className="mb-8 bg-stone-800" />
+            <Separator className="mb-8 bg-white/10" />
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <Link
                 href="/events"
@@ -382,7 +383,7 @@ export default async function EventPage({ params }: EventPageProps) {
               <Link href="/">
                 <Button
                   variant="outline"
-                  className="rounded-full border-stone-600 bg-transparent text-white hover:bg-stone-800 hover:text-white transition-colors font-normal"
+                  className="rounded-full border-white/16 bg-transparent text-white hover:bg-white/8 hover:text-white transition-colors font-normal"
                 >
                   Back to Home
                 </Button>
@@ -393,15 +394,15 @@ export default async function EventPage({ params }: EventPageProps) {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-stone-800 py-8">
+      <footer className="border-t border-white/10 py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-sm text-stone-500">
+            <div className="text-sm text-slate-500">
               &copy; 2026 AIDDA Institute
             </div>
             <Link
               href="/"
-              className="text-sm text-stone-400 hover:text-white transition-colors"
+              className="text-sm text-slate-300 transition-colors hover:text-white"
             >
               Back to Home
             </Link>
