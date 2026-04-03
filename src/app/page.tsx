@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
@@ -10,7 +10,7 @@ import { CommitteeSection } from "@/components/CommitteeSection";
 import { Footer } from "@/components/Footer";
 import { SignupPopup } from "@/components/SignupPopup";
 
-export default function Home() {
+function HomeContent() {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -42,5 +42,13 @@ export default function Home() {
       {/* Global Signup Popup */}
       <SignupPopup isOpen={isSignupOpen || signupRequested} onClose={closeSignup} />
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <HomeContent />
+    </Suspense>
   );
 }
