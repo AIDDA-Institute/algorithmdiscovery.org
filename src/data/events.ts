@@ -84,7 +84,7 @@ export const events: Event[] = [
     description:
       "AIDDA 2026 is a two-day virtual technical conference focused on AI-driven algorithm discovery.",
     longDescription:
-      "AIDDA 2026 is a two-day virtual technical conference focused on AI-driven algorithm discovery.\n\nThe event brings together researchers and builders working on LLM-guided evolutionary systems, automated algorithm design, test-time discovery, coding agents, verifiers, benchmarks, and autonomous science systems.\n\nDay 1\n\nOri Press - AlgoTune\n\nHenrique Assumpção - CodeEvolve\n\nQingfu Zhang - LLM4AD\n\nRobert Lange - Sakana AI\n\nAsankhaya Sharma - OpenEvolve\n\nPanel discussion\n\nDay 2\n\nFederico Bianchi - TTT-Discover\n\nShu Liu, Mert Cemri, and Shubham Agarwal - SkyDiscover\n\nElliot Cowen - Autoscience\n\nKerry He - Hiverge\n\nAlex Goldie - DiscoGen\n\nPanel discussion\n\nLive automated experiment:\n\nDuring the event, we will run a live automated discovery experiment in the background. Participants are invited to join an optimization swarm aimed at discovering new algorithms for operations research problems.",
+      "AIDDA 2026 is a two-day virtual technical conference focused on AI-driven algorithm discovery.\n\nThe event brings together researchers and builders working on LLM-guided evolutionary systems, automated algorithm design, test-time discovery, coding agents, verifiers, benchmarks, and autonomous science systems.",
     date: "June 9, 2026 - June 10, 2026",
     time: "9:30 PM GMT +5:30",
     iconName: "Users",
