@@ -86,8 +86,8 @@ export const events: Event[] = [
       "AIDDA 2026 is a two-day virtual technical conference focused on AI-driven algorithm discovery.",
     longDescription:
       "AIDDA 2026 is a two-day virtual technical conference focused on AI-driven algorithm discovery.\n\nThe event brings together researchers and builders working on LLM-guided evolutionary systems, automated algorithm design, test-time discovery, coding agents, verifiers, benchmarks, and autonomous science systems.",
-    date: "June 9, 2026 - June 10, 2026",
-    time: "9:30 PM GMT +5:30",
+    date: "June 9, 2026",
+    time: "5:00 PM - Jun 10, 8:30 PM GMT+1",
     iconName: "Users",
     icon: Users,
     color: "emerald",
