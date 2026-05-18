@@ -286,7 +286,7 @@ export default async function EventPage({ params }: EventPageProps) {
                 {event.speakers.map((speaker, index) => (
                   <div
                     key={index}
-                    className="flex flex-col gap-1 p-4 bg-slate-800/30 rounded-xl border border-stone-700/30"
+                    className="flex flex-col gap-3 p-5 bg-slate-800/30 rounded-xl border border-stone-700/30"
                   >
                     <div className="flex items-center gap-2">
                       {speaker.link ? (
@@ -304,8 +304,13 @@ export default async function EventPage({ params }: EventPageProps) {
                       )}
                     </div>
                     {speaker.topic && (
-                      <p className="text-stone-400 text-sm font-normal pl-0">
+                      <p className="text-stone-300 text-base font-normal pl-0">
                         {speaker.topic}
+                      </p>
+                    )}
+                    {speaker.abstract && (
+                      <p className="text-stone-400 text-sm leading-relaxed whitespace-pre-line">
+                        {speaker.abstract}
                       </p>
                     )}
                   </div>
