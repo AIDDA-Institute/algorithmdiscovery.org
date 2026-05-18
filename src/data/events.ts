@@ -26,6 +26,7 @@ export interface Event {
     name: string;
     topic?: string;
     abstract?: string;
+    day?: string;
     link?: string;
   }[];
   agenda?: string[];
@@ -97,50 +98,58 @@ export const events: Event[] = [
       {
         name: "Ori Press",
         topic: "AlgoTune: Can Language Models Speed Up General-Purpose Numerical Programs?",
+        day: "Day 1",
         abstract:
           "Can language models speed up math and physics functions from popular Python libraries, such as NumPy or SciPy? To answer this, we built AlgoTune, a benchmark of 154 math, physics, and computer science functions from widely-used Python repositories. We give language models a budget of one dollar to optimize each function. In this talk, we'll go over the benchmark setup and give insights about the interesting ways language models approach this task.",
       },
       {
         name: "Henrique Assumpção",
         topic: "Evolutionary Agents for Scientific Discovery",
+        day: "Day 1",
         abstract:
           "This talk explores the emerging wave of LLM-driven scientific discovery, focusing on how OSS frameworks can democratize high-level algorithmic search. We will dive into some of the technical details of CodeEvolve, and discuss how open-weight models can match proprietary performance at a fraction of the cost. Finally, we discuss the need for standardized benchmarks to reliably measure progress as we transition toward a future of reproducible, agentic scientific research.",
       },
       {
         name: "Qingfu Zhang",
         topic: "Some Thoughts and Work on LLM4AD",
+        day: "Day 1",
         abstract:
           "In this talk, I will explain our motivation for using LLM combined with iterative search, primarily evolutionary methods, for automated algorithm design. I will argue that algorithm design can be naturally modelled as an optimization problem in a language space, and that landscape analysis is very important for the development of LLM4AD. I will introduce some of our recent work, including multiobjective EoH for discovering sets of algorithms of different preferences; EoH-S for finding a set of complementary algorithms, whose basic idea is that algorithm design and problem analysis should be approached collaboratively; and multi-modal EoH for leveraging multi-modal information in algorithm development.",
       },
       {
         name: "Robert Tjarko Lange",
         topic: "ShinkaEvolve, Evolved: Faster, Cheaper, in Your Coding Agent",
+        day: "Day 1",
         abstract:
           "In this talk, I'll share the story of ShinkaEvolve, our open-source framework for sample-efficient program evolution, and reflect on how it fits into a broader research trajectory toward LLM- and agent-driven scientific discovery. I'll start with the motivation: recent progress in scaling inference-time compute has made evolutionary agentic harnesses a surprisingly powerful tool for discovery, but existing systems are sample-inefficient and largely closed-source. I'll then walk through Shinka's core recipe: parent program sampling that balances exploration and exploitation, novelty-based rejection sampling, and bandit-driven LLM ensemble selection. These ingredients let Shinka discover a new state-of-the-art circle packing with just 150 samples, design strong mathematical reasoning harnesses, improve competitive programming solutions, and, most recently, help team Unagi win the 2025 ICFP Programming Contest by optimizing SAT encodings. In the second half, I'll focus on what's changed since Shinka's initial release: substantial throughput optimizations, a cost-aware model selection mechanism that makes ensembles economically sane, and a new CLI that slots Shinka directly into general-purpose coding agents like Claude Code and Codex, turning program evolution into something you can smoothly invoke during everyday development.",
       },
-      { name: "Asankhaya Sharma", topic: "OpenEvolve" },
+      { name: "Asankhaya Sharma", topic: "OpenEvolve", day: "Day 1" },
       {
         name: "Federico Bianchi",
         topic: "Learning to Discover at Test Time",
+        day: "Day 2",
         abstract:
           "How can we use AI to discover a new state of the art for a scientific problem? Prior work in test-time scaling, such as AlphaEvolve, performs search by prompting a frozen LLM. We perform reinforcement learning at test time, so the LLM can continue to train, but now with experience specific to the test problem. This form of continual learning is quite special, because its goal is to produce one great solution rather than many good ones on average, and to solve this very problem rather than generalize to other problems. Therefore, our learning objective and search subroutine are designed to prioritize the most promising solutions. We call this method Test-Time Training to Discover (TTT-Discover). Following prior work, we focus on problems with continuous rewards. We report results for every problem we attempted, across mathematics, GPU kernel engineering, algorithm design, and biology. TTT-Discover sets the new state of the art in almost all of them: Erdős' minimum overlap problem and an autocorrelation inequality; a GPUMode kernel competition, up to 2x faster than prior art; past AtCoder algorithm competitions; and a denoising problem in single-cell analysis. Our solutions are reviewed by experts or the organizers. All our results are achieved with an open model, OpenAI gpt-oss-120b, and can be reproduced with our publicly available code, in contrast to previous best results that required closed frontier models. Our test-time training runs are performed using Tinker, an API by Thinking Machines, with a cost of only a few hundred dollars per problem.",
       },
       {
         name: "Shu Liu, Mert Cemri, and Shubham Agarwal",
         topic: "SkyDiscover: A Flexible Framework for AI-Driven Scientific and Algorithmic Discovery",
+        day: "Day 2",
         abstract:
           "LLM-driven evolutionary search is emerging as a powerful approach for discovering algorithms and designs, but existing frameworks are difficult to reuse, extend, and compare. We present SkyDiscover, a flexible, adaptive framework for AI-driven scientific and algorithmic discovery. SkyDiscover decomposes the discovery loop into four reusable components: Context Builder, Solution Generator, Evaluator, and Solution Selector, while exposing the control logic above them as a programmable interface. This modular design enables rapid experimentation and even supports adaptive designs where AI can adapt or even optimize the optimization process itself during search. We demonstrate SkyDiscover across more than 200 optimization tasks spanning mathematical optimization, systems design, algorithmic programming, and constrained image generation. Under fixed budgets and shared models, the adaptive algorithms implemented on top of SkyDiscover achieve the strongest open-source performance compared to OpenEvolve, ShinkaEvolve, and GEPA, and match or exceed AlphaEvolve on many tasks. A live demo further showcases end-to-end discovery with real-time monitoring, human-in-the-loop steering, and meta-optimization of the search process.",
       },
       {
         name: "Eliot Cowan",
         topic: "Automated Algorithmic Discovery in Machine Learning",
+        day: "Day 2",
         abstract:
           "Machine learning progress is increasingly bottlenecked not by compute or data, but by the human bandwidth required to read new papers, formulate hypotheses, run speculative experiments, and translate promising ideas into production systems. This talk argues that the next leap in ML will come from automated algorithmic discovery systems. Rather than treating research as a sequence of one off model improvements, I will describe a practical architecture for continuous discovery: agents that ingest and synthesize the literature, generate and prioritize algorithmic hypotheses, test them against application specific evaluation environments, and ship only the changes that verifiably improve real metrics. Drawing on lessons at Autoscience Institute, including systems that have produced peer reviewed research, won a Kaggle medal, and are now being used to improve production ML models, I will discuss what works, where these systems break, and how to design around failure modes such as hallucinated code, weak evaluation loops, and reward hacking. The goal is to build ML applications that improve themselves as the frontier moves, turning algorithmic discovery from a human bottleneck into a scalable engineering primitive.",
       },
-      { name: "Kerry He", topic: "TBD", abstract: "TBD" },
+      { name: "Kerry He", topic: "HiVerge", abstract: "TBD", day: "Day 2" },
       {
         name: "Alex Goldie",
         topic: "DiscoGen: Learning to Discover Learning Algorithms",
+        day: "Day 2",
         abstract:
           "Automating the development of machine learning algorithms, or meta-learning, has the potential to unlock new frontiers in the field. However, our ability to learn to discover has been limited by a focus on small, static benchmarks. Motivated by how procedural generation unlocked generalist agents in reinforcement learning, this talk will explore how a similar approach can be applied to algorithm discovery in machine learning. Specifically, I will introduce DiscoGen, a new procedural generator of algorithm discovery tasks. Using DiscoGen, we demonstrate how agents used for algorithm discovery can themselves be optimised in a meta-meta-loop. DiscoGen further establishes principled task design for the field, in particular emphasising the need for meta-train and meta-test distinctions. Finally, the talk will discuss future research ideas enabled by DiscoGen, such as training algorithm world models or other means for optimising discovery agents.",
       }

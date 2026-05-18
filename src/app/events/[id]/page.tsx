@@ -64,6 +64,18 @@ export default async function EventPage({ params }: EventPageProps) {
 
   const colors = colorMap[event.color];
   const Icon = event.icon;
+  const speakerGroups = event.speakers?.reduce<Record<string, NonNullable<typeof event.speakers>>>(
+    (groups, speaker) => {
+      const day = speaker.day || "Speakers";
+      groups[day] = [...(groups[day] || []), speaker];
+      return groups;
+    },
+    {}
+  );
+  const speakerGroupEntries = speakerGroups
+    ? Object.entries(speakerGroups)
+    : [];
+  const hasSpeakerDays = speakerGroupEntries.some(([day]) => day !== "Speakers");
   const isTBD =
     event.date.includes("[TBC]") ||
     event.date.includes("TBD") ||
@@ -282,36 +294,48 @@ export default async function EventPage({ params }: EventPageProps) {
                 <Users className="h-5 w-5 text-stone-400" />
                 Speakers & Talks
               </h2>
-              <div className="space-y-4">
-                {event.speakers.map((speaker, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col gap-3 p-5 bg-slate-800/30 rounded-xl border border-stone-700/30"
-                  >
-                    <div className="flex items-center gap-2">
-                      {speaker.link ? (
-                        <a
-                          href={speaker.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white font-medium hover:text-emerald-400 transition-colors"
-                        >
-                          {speaker.name}
-                          <ExternalLink className="h-3 w-3 ml-1 inline" />
-                        </a>
-                      ) : (
-                        <span className="text-white font-medium">{speaker.name}</span>
-                      )}
-                    </div>
-                    {speaker.topic && (
-                      <p className="text-stone-300 text-base font-normal pl-0">
-                        {speaker.topic}
-                      </p>
+              <div className="space-y-8">
+                {speakerGroupEntries.map(([day, speakers]) => (
+                  <div key={day} className="space-y-4">
+                    {hasSpeakerDays && (
+                      <h3 className="text-lg font-normal text-white">{day}</h3>
                     )}
-                    {speaker.abstract && (
-                      <p className="text-stone-400 text-sm leading-relaxed whitespace-pre-line">
-                        {speaker.abstract}
-                      </p>
+                    {speakers.map((speaker, index) => (
+                      <div
+                        key={`${speaker.name}-${index}`}
+                        className="flex flex-col gap-3 p-5 bg-slate-800/30 rounded-xl border border-stone-700/30"
+                      >
+                        <div className="flex items-center gap-2">
+                          {speaker.link ? (
+                            <a
+                              href={speaker.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-white font-medium hover:text-emerald-400 transition-colors"
+                            >
+                              {speaker.name}
+                              <ExternalLink className="h-3 w-3 ml-1 inline" />
+                            </a>
+                          ) : (
+                            <span className="text-white font-medium">{speaker.name}</span>
+                          )}
+                        </div>
+                        {speaker.topic && (
+                          <p className="text-stone-300 text-base font-normal pl-0">
+                            {speaker.topic}
+                          </p>
+                        )}
+                        {speaker.abstract && (
+                          <p className="text-stone-400 text-sm leading-relaxed whitespace-pre-line">
+                            {speaker.abstract}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                    {hasSpeakerDays && (
+                      <div className="flex flex-col gap-1 p-5 bg-slate-800/30 rounded-xl border border-stone-700/30">
+                        <span className="text-white font-medium">Panel discussion</span>
+                      </div>
                     )}
                   </div>
                 ))}
