@@ -4,7 +4,12 @@ import { Separator } from "@/components/ui/separator";
 import { Globe } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
 
-const committeeMembers = [
+const committeeMembers: {
+  name: string;
+  email: string;
+  website?: string;
+  bio: string;
+}[] = [
   {
     name: "Dr. Daniel Adams",
     email: "daniel@tig.foundation",
@@ -14,6 +19,18 @@ const committeeMembers = [
     name: "Henrique Assumpção",
     email: "henriquesoares@dcc.ufmg.br",
     bio: "Henrique Assumpção is a Machine Learning Researcher at Inter and a Master's student in Computer Science at Universidade Federal de Minas Gerais (UFMG). He holds a BSc in Computer Science from UFMG, with a minor in Pure Mathematics. He is the lead developer of CodeEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research spans representation learning, language models, and algebraic graph theory.",
+  },
+  {
+    name: "Samuel AK Leeney",
+    email: "sakl2@cam.ac.uk",
+    website: "https://www.linkedin.com/in/sam-leeney-6a0514232/",
+    bio: "Samuel AK Leeney is a physicist, machine learning researcher and entrepreneur based at the University of Cambridge's Cavendish Laboratory and Kavli Institute for Cosmology, where his research focuses on precision cosmological inference, GPU-accelerated computation and machine learning methods for detecting faint signals from the early universe, spanning 21cm cosmology, transient astronomy, medical physics and scientific machine learning. He founded Cambridge Compute Company (C3), a platform building infrastructure for automated, compute-intensive scientific research, and serves as Head of Research at the Cambridge Centre for Frontier Technologies, reflecting a broader focus on bridging interdisciplinary research and industrial collaboration.",
+  },
+  {
+    name: "Xinnuo Xu",
+    email: "xuxinnuo@yahoo.com",
+    website: "https://www.linkedin.com/in/xinnuo-xu/",
+    bio: "Xinnuo is a Senior Researcher at Microsoft Research, where she focuses on rethinking model architectures and training mechanisms for large language models. In her spare time, she explores automated research systems for both AI and chemistry.",
   },
   //   {
   //     name: "Prof. Michael Rodriguez",
@@ -68,13 +85,17 @@ export function CommitteeSection() {
                         >
                           {member.email}
                         </a>
-                        <a
-                          href="#"
-                          className="text-stone-400 hover:text-stone-700 transition-colors"
-                          aria-label="Website"
-                        >
-                          <Globe className="h-4 w-4" />
-                        </a>
+                        {member.website && (
+                          <a
+                            href={member.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-stone-400 hover:text-stone-700 transition-colors"
+                            aria-label="Website"
+                          >
+                            <Globe className="h-4 w-4" />
+                          </a>
+                        )}
                       </div>
                     </div>
 
