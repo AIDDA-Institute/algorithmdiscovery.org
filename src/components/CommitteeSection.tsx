@@ -1,36 +1,50 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { Globe } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
 
 const committeeMembers: {
   name: string;
   email: string;
-  website?: string;
+  linkedin: string;
   bio: string;
 }[] = [
   {
     name: "Dr. Daniel Adams",
     email: "daniel@tig.foundation",
+    linkedin: "https://www.linkedin.com/in/daniel-t-s-adams/",
     bio: "Dr. Daniel Adams is a Mathematics Researcher at The Innovation Game (TIG). He holds an MSc in Mathematics from the University of Bristol and a PhD from the University of Edinburgh, where he specialised in Stochastic Analysis and Optimal Transport. He was awarded a prestigious Maxwell Research Fellowship jointly by the University of Edinburgh and Heriot-Watt University, and later held a postdoctoral position at Université Paris Dauphine.",
   },
   {
     name: "Henrique Assumpção",
     email: "henriquesoares@dcc.ufmg.br",
+    linkedin: "https://www.linkedin.com/in/henriqueassumpcao/",
     bio: "Henrique Assumpção is a Machine Learning Researcher at Inter and a Master's student in Computer Science at Universidade Federal de Minas Gerais (UFMG). He holds a BSc in Computer Science from UFMG, with a minor in Pure Mathematics. He is the lead developer of CodeEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research spans representation learning, language models, and algebraic graph theory.",
+  },
+  {
+    name: "Shayan Chashm Jahan",
+    email: "shayan@repovive.com",
+    linkedin: "https://www.linkedin.com/in/shayan-chashm-jahan-32b4a2216/",
+    bio: "Shayan Chashm Jahan is a PhD student in Theoretical Computer Science at the University of Maryland, College Park. His research spans algorithms and algorithmic game theory, with work appearing at venues including NeurIPS 2024. He is the founder of Repovive, a platform for algorithmic coding competitions with over 7,000 users, and runs a YouTube channel with over 30,000 subscribers dedicated to teaching algorithms.",
   },
   {
     name: "Samuel AK Leeney",
     email: "sakl2@cam.ac.uk",
-    website: "https://www.linkedin.com/in/sam-leeney-6a0514232/",
+    linkedin: "https://www.linkedin.com/in/sam-leeney-6a0514232/",
     bio: "Samuel AK Leeney is a physicist, machine learning researcher and entrepreneur based at the University of Cambridge's Cavendish Laboratory and Kavli Institute for Cosmology, where his research focuses on precision cosmological inference, GPU-accelerated computation and machine learning methods for detecting faint signals from the early universe, spanning 21cm cosmology, transient astronomy, medical physics and scientific machine learning. He founded Cambridge Compute Company (C3), a platform building infrastructure for automated, compute-intensive scientific research, and serves as Head of Research at the Cambridge Centre for Frontier Technologies, reflecting a broader focus on bridging interdisciplinary research and industrial collaboration.",
   },
   {
-    name: "Xinnuo Xu",
+    name: "Dr. Xinnuo Xu",
     email: "xuxinnuo@yahoo.com",
-    website: "https://www.linkedin.com/in/xinnuo-xu/",
+    linkedin: "https://www.linkedin.com/in/xinnuo-xu/",
     bio: "Xinnuo is a Senior Researcher at Microsoft Research, where she focuses on rethinking model architectures and training mechanisms for large language models. In her spare time, she explores automated research systems for both AI and chemistry.",
+  },
+  {
+    name: "Richard Cornelius Suwandi",
+    email: "richardsuwandi@link.cuhk.edu.cn",
+    linkedin: "https://www.linkedin.com/in/richardcsuwandi/",
+    bio: "Richard Cornelius Suwandi is a Ph.D. student in Computer and Information Engineering at The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). He holds a B.Sc. in Statistics from CUHK-Shenzhen in 2023. He is a co-developer of OpenEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research interests span black-box optimization, probabilistic machine learning, and large language models. He is a recipient of the IEEE Signal Processing Society (SPS) Scholarship, the Guangdong Government Outstanding Student Scholarship, and funding from the Shenzhen Universiade International Foundation.",
   },
   //   {
   //     name: "Prof. Michael Rodriguez",
@@ -85,17 +99,15 @@ export function CommitteeSection() {
                         >
                           {member.email}
                         </a>
-                        {member.website && (
-                          <a
-                            href={member.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-stone-400 hover:text-stone-700 transition-colors"
-                            aria-label="Website"
-                          >
-                            <Globe className="h-4 w-4" />
-                          </a>
-                        )}
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-stone-400 hover:text-stone-700 transition-colors"
+                          aria-label="LinkedIn"
+                        >
+                          <Linkedin className="h-4 w-4" />
+                        </a>
                       </div>
                     </div>
 
