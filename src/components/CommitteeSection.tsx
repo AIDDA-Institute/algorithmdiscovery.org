@@ -15,14 +15,12 @@ const committeeMembers: {
     email: "daniel@tig.foundation",
     linkedin: "https://www.linkedin.com/in/daniel-t-s-adams/",
     bio: "Dr. Daniel Adams is a Mathematics Researcher at The Innovation Game (TIG). He holds an MSc in Mathematics from the University of Bristol and a PhD from the University of Edinburgh, where he specialised in Stochastic Analysis and Optimal Transport. He was awarded a prestigious Maxwell Research Fellowship jointly by the University of Edinburgh and Heriot-Watt University, and later held a postdoctoral position at Université Paris Dauphine.",
-    linkedin: "https://www.linkedin.com/in/daniel-t-s-adams/",
   },
   {
     name: "Henrique Assumpção",
     email: "henriquesoares@dcc.ufmg.br",
     linkedin: "https://www.linkedin.com/in/henriqueassumpcao/",
     bio: "Henrique Assumpção is a Machine Learning Researcher at Inter and a Master's student in Computer Science at Universidade Federal de Minas Gerais (UFMG). He holds a BSc in Computer Science from UFMG, with a minor in Pure Mathematics. He is the lead developer of CodeEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research spans representation learning, language models, and algebraic graph theory.",
-    linkedin: "https://www.linkedin.com/in/henriqueassumpcao/",
   },
   {
     name: "Shayan Chashm Jahan",
