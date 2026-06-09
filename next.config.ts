@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         destination: "https://discord.gg/CjEnRybBm",
         permanent: false,
       },
+      {
+        source: "/AIDDA2026",
+        destination: "https://us06web.zoom.us/j/86268091058",
+        permanent: false,
+      },
     ];
   },
 };
