@@ -46,30 +46,6 @@ const committeeMembers: {
     bio: "Richard Cornelius Suwandi is a Ph.D. student in Computer and Information Engineering at The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). He holds a B.Sc. in Statistics from CUHK-Shenzhen in 2023. He is a co-developer of OpenEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research interests span black-box optimization, probabilistic machine learning, and large language models. He is a recipient of the IEEE Signal Processing Society (SPS) Scholarship, the Guangdong Government Outstanding Student Scholarship, and funding from the Shenzhen Universiade International Foundation.",
     linkedin: "https://www.linkedin.com/in/richardcsuwandi/",
   },
-  {
-    name: "Shayan Chashm Jahan",
-    email: "shayan@repovive.com",
-    linkedin: "https://www.linkedin.com/in/shayan-chashm-jahan-32b4a2216/",
-    bio: "Shayan Chashm Jahan is a PhD student in Theoretical Computer Science at the University of Maryland, College Park. His research spans algorithms and algorithmic game theory, with work appearing at venues including NeurIPS 2024. He is the founder of Repovive, a platform for algorithmic coding competitions with over 7,000 users, and runs a YouTube channel with over 30,000 subscribers dedicated to teaching algorithms.",
-  },
-  {
-    name: "Samuel AK Leeney",
-    email: "sakl2@cam.ac.uk",
-    linkedin: "https://www.linkedin.com/in/sam-leeney-6a0514232/",
-    bio: "Samuel AK Leeney is a physicist, machine learning researcher and entrepreneur based at the University of Cambridge's Cavendish Laboratory and Kavli Institute for Cosmology, where his research focuses on precision cosmological inference, GPU-accelerated computation and machine learning methods for detecting faint signals from the early universe, spanning 21cm cosmology, transient astronomy, medical physics and scientific machine learning. He founded Cambridge Compute Company (C3), a platform building infrastructure for automated, compute-intensive scientific research, and serves as Head of Research at the Cambridge Centre for Frontier Technologies, reflecting a broader focus on bridging interdisciplinary research and industrial collaboration.",
-  },
-  {
-    name: "Dr. Xinnuo Xu",
-    email: "xuxinnuo@yahoo.com",
-    linkedin: "https://www.linkedin.com/in/xinnuo-xu/",
-    bio: "Xinnuo is a Senior Researcher at Microsoft Research, where she focuses on rethinking model architectures and training mechanisms for large language models. In her spare time, she explores automated research systems for both AI and chemistry.",
-  },
-  {
-    name: "Richard Cornelius Suwandi",
-    email: "richardsuwandi@link.cuhk.edu.cn",
-    linkedin: "https://www.linkedin.com/in/richardcsuwandi/",
-    bio: "Richard Cornelius Suwandi is a Ph.D. student in Computer and Information Engineering at The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). He holds a B.Sc. in Statistics from CUHK-Shenzhen in 2023. He is a co-developer of OpenEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research interests span black-box optimization, probabilistic machine learning, and large language models. He is a recipient of the IEEE Signal Processing Society (SPS) Scholarship, the Guangdong Government Outstanding Student Scholarship, and funding from the Shenzhen Universiade International Foundation.",
-  },
   //   {
   //     name: "Prof. Michael Rodriguez",
   //     email: "m.rodriguez@algorithmdiscovery.org",
