@@ -83,15 +83,15 @@ export const events: Event[] = [
     title: "AIDDA 2026",
     type: "Conference",
     description:
-      "AIDDA 2026 is a two-day virtual technical conference focused on AI-driven algorithm discovery.",
+      "AIDDA 2026 was a two-day virtual technical conference focused on AI-driven algorithm discovery.",
     longDescription:
-      "AIDDA 2026 is a two-day virtual technical conference focused on AI-driven algorithm discovery.\n\nThe event brings together researchers and builders working on LLM-guided evolutionary systems, automated algorithm design, test-time discovery, coding agents, verifiers, benchmarks, and autonomous science systems.",
+      "AIDDA 2026 was a two-day virtual technical conference focused on AI-driven algorithm discovery.\n\nThe event brought together researchers and builders working on LLM-guided evolutionary systems, automated algorithm design, test-time discovery, coding agents, verifiers, benchmarks, and autonomous science systems.",
     date: "June 9, 2026",
     time: "5:00 PM - Jun 10, 8:30 PM GMT+1",
     iconName: "Users",
     icon: Users,
     color: "emerald",
-    status: "upcoming",
+    status: "past",
     lumaUrl: "https://luma.com/AIDDA2026",
     location: "Virtual",
     speakers: [
@@ -187,6 +187,34 @@ export const events: Event[] = [
       "7:00 PM Close",
     ],
     tags: ["Speaker Event", "San Francisco", "AI Research"],
+  },
+  {
+    id: 3,
+    title:
+      "LEVI: Stronger Search Architectures Can Substitute for Larger LLMs in Evolutionary Search",
+    type: "Speaker Event",
+    description:
+      "Kicking off the AIDDA Institute speaker series, Temoor Tanveer presents LEVI, a framework showing that stronger search architectures can substitute for — or even outperform — larger LLMs in evolutionary search.",
+    longDescription:
+      "Kicking off the AIDDA Institute speaker series, Temoor Tanveer (Carnegie Mellon University alumnus, independent researcher) presents LEVI, a framework demonstrating that stronger search architectures can substitute for — or even outperform — larger LLMs in evolutionary search.\n\nThe talk covers LEVI's conceptual foundations, core design, research findings, and cost-saving mechanisms, and may include a live demonstration on a computational problem. LEVI achieves top benchmark scores at 3.3-6.7x lower computational cost than competing frameworks, matches existing best results on one problem at 35x reduced expense, and outperforms GEPA on prompt optimization benchmarks using less than half the computational budget.",
+    date: "Tuesday, July 28, 2026",
+    time: "6:00 PM - 7:00 PM GMT+1",
+    iconName: "Mic",
+    icon: Mic,
+    color: "amber",
+    status: "upcoming",
+    lumaUrl: "https://luma.com/z7m7xpzk",
+    location: "Virtual (Zoom)",
+    speakers: [
+      {
+        name: "Temoor Tanveer",
+        topic:
+          "LEVI: Stronger Search Architectures Can Substitute for Larger LLMs in Evolutionary Search",
+        abstract:
+          "LEVI is a framework demonstrating that stronger search architectures can substitute for or even outperform larger LLMs in evolutionary search. The presentation covers the conceptual foundations, core design, research findings, and cost-saving mechanisms, and may include a live demonstration on a computational problem.",
+      },
+    ],
+    tags: ["Speaker Event", "Remote", "Seminar"],
   },
 ];
 
