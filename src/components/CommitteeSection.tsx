@@ -23,12 +23,6 @@ const committeeMembers: {
     bio: "Henrique Assumpção is a Machine Learning Researcher at Inter and a Master's student in Computer Science at Universidade Federal de Minas Gerais (UFMG). He holds a BSc in Computer Science from UFMG, with a minor in Pure Mathematics. He is the lead developer of CodeEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research spans representation learning, language models, and algebraic graph theory.",
   },
   {
-    name: "Shayan Chashm Jahan",
-    email: "shayan@repovive.com",
-    bio: "Shayan Chashm Jahan is a PhD student in Theoretical Computer Science at the University of Maryland, College Park. His research spans algorithms and algorithmic game theory, with work appearing at venues including NeurIPS 2024. He is the founder of Repovive, a platform for algorithmic coding competitions with over 7,000 users, and runs a YouTube channel with over 30,000 subscribers dedicated to teaching algorithms.",
-    linkedin: "https://www.linkedin.com/in/shayan-chashm-jahan-32b4a2216/",
-  },
-  {
     name: "Samuel AK Leeney",
     email: "sakl2@cam.ac.uk",
     bio: "Samuel AK Leeney is a physicist, machine learning researcher and entrepreneur based at the University of Cambridge's Cavendish Laboratory and Kavli Institute for Cosmology, where his research focuses on precision cosmological inference, GPU-accelerated computation and machine learning methods for detecting faint signals from the early universe, spanning 21cm cosmology, transient astronomy, medical physics and scientific machine learning. He founded Cambridge Compute Company (C3), a platform building infrastructure for automated, compute-intensive scientific research, and serves as Head of Research at the Cambridge Centre for Frontier Technologies, reflecting a broader focus on bridging interdisciplinary research and industrial collaboration.",
