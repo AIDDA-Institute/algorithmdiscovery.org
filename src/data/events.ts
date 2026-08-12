@@ -202,7 +202,7 @@ export const events: Event[] = [
     iconName: "Mic",
     icon: Mic,
     color: "amber",
-    status: "upcoming",
+    status: "past",
     lumaUrl: "https://luma.com/z7m7xpzk",
     location: "Virtual (Zoom)",
     speakers: [
