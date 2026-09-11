@@ -216,6 +216,33 @@ export const events: Event[] = [
     ],
     tags: ["Speaker Event", "Remote", "Seminar"],
   },
+  {
+    id: 4,
+    title:
+      "Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models",
+    type: "Speaker Event",
+    description:
+      "Kevin Murphy presents Model Discovery Agent, exploring LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models.",
+    longDescription:
+      "Join the AIDDA Institute seminar series for a talk by Kevin Murphy, Principal Research Scientist at Google DeepMind and adjunct professor at the University of British Columbia (UBC).\n\nKevin will discuss Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models.",
+    date: "Tuesday, October 13, 2026",
+    time: "5:00 AM - 6:00 AM GMT+1",
+    iconName: "Mic",
+    icon: Mic,
+    color: "amber",
+    status: "upcoming",
+    lumaUrl: "https://luma.com/n8jywloy",
+    location: "Virtual (Zoom)",
+    speakers: [
+      {
+        name: "Kevin Murphy",
+        topic:
+          "Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models",
+        link: "https://arxiv.org/abs/2608.09696",
+      },
+    ],
+    tags: ["Speaker Event", "Remote", "Seminar"],
+  },
 ];
 
 export function getEventById(id: number): Event | undefined {
