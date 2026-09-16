@@ -42,6 +42,7 @@ const committeeMembers: {
   },
   {
     name: "Dr. Zia Khan",
+    email: "zkhan@alumni.princeton.edu",
     linkedin: "https://www.linkedin.com/in/zia-khan-phd/",
     bio: "Dr. Zia Khan is a computational scientist working at the intersection of LLMs and the life sciences. He holds a Ph.D. in Computer Science from Princeton University and has held scientific roles across biotech and pharma, including Genentech. His work in computational biology spans biological discovery and methods development, with publications in Science and Nature. More recently, he has focused on LLM agents for biological data analysis and algorithm discovery.",
   },
