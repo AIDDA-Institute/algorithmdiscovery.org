@@ -217,6 +217,24 @@ export const events: Event[] = [
     tags: ["Speaker Event", "Remote", "Seminar"],
   },
   {
+    id: 5,
+    title: "London AI x Science Hackathon",
+    type: "Hackathon",
+    description:
+      "Join the London AI x Science Hackathon, where AIDDA Institute and Cambridge Compute Company (C3) are running the autoresearch hack track.",
+    longDescription:
+      "The London AI x Science Hackathon brings researchers, ML engineers, and AI scientists together to apply AI to scientific challenges, including autonomous science, materials discovery, and biological systems.\n\nAIDDA Institute and Cambridge Compute Company (C3) are running the autoresearch hack track.\n\nThe hackathon takes place in London from 9:00 AM on Saturday, October 3 to 6:00 PM on Sunday, October 4, 2026 (BST, GMT+1). Visit the Luma event page for registration and further details.",
+    date: "October 3–4, 2026",
+    time: "Oct 3, 9:00 AM - Oct 4, 6:00 PM BST (GMT+1)",
+    iconName: "Code",
+    icon: Code,
+    color: "rose",
+    status: "upcoming",
+    lumaUrl: "https://luma.com/3iipivod",
+    location: "London, United Kingdom",
+    tags: ["Hackathon", "London", "Autoresearch", "AI for Science"],
+  },
+  {
     id: 4,
     title:
       "Model Discovery Agent: LLM-assisted Bayesian experiment design for data-efficient discovery of mechanistic world models",

@@ -80,6 +80,7 @@ export function MeetingScheduleSection({ onOpenSignup }: MeetingScheduleSectionP
               { label: "Reading Group", color: "blue" },
               { label: "Technical Discussion", color: "violet" },
               { label: "Speaker Event", color: "amber" },
+              { label: "Hackathon", color: "rose" },
               { label: "Community Event", color: "rose" },
             ].map((item) => (
               <div

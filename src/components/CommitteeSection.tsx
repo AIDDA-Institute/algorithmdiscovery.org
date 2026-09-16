@@ -6,7 +6,7 @@ import { FadeIn, StaggerContainer, StaggerItem } from "@/components/FadeIn";
 
 const committeeMembers: {
   name: string;
-  email: string;
+  email?: string;
   linkedin: string;
   bio: string;
 }[] = [
@@ -39,6 +39,11 @@ const committeeMembers: {
     email: "richardsuwandi@link.cuhk.edu.cn",
     bio: "Richard Cornelius Suwandi is a Ph.D. student in Computer and Information Engineering at The Chinese University of Hong Kong, Shenzhen (CUHK-Shenzhen). He holds a B.Sc. in Statistics from CUHK-Shenzhen in 2023. He is a co-developer of OpenEvolve, an open-source implementation of Google DeepMind's AlphaEvolve for automated algorithmic discovery and optimization. His research interests span black-box optimization, probabilistic machine learning, and large language models. He is a recipient of the IEEE Signal Processing Society (SPS) Scholarship, the Guangdong Government Outstanding Student Scholarship, and funding from the Shenzhen Universiade International Foundation.",
     linkedin: "https://www.linkedin.com/in/richardcsuwandi/",
+  },
+  {
+    name: "Dr. Zia Khan",
+    linkedin: "https://www.linkedin.com/in/zia-khan-phd/",
+    bio: "Dr. Zia Khan is a computational scientist working at the intersection of LLMs and the life sciences. He holds a Ph.D. in Computer Science from Princeton University and has held scientific roles across biotech and pharma, including Genentech. His work in computational biology spans biological discovery and methods development, with publications in Science and Nature. More recently, he has focused on LLM agents for biological data analysis and algorithm discovery.",
   },
   //   {
   //     name: "Prof. Michael Rodriguez",
@@ -87,12 +92,14 @@ export function CommitteeSection() {
                         {member.name}
                       </h3>
                       <div className="flex items-center gap-2">
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="text-sm text-stone-600 underline underline-offset-2 hover:text-stone-900 font-normal"
-                        >
-                          {member.email}
-                        </a>
+                        {member.email && (
+                          <a
+                            href={`mailto:${member.email}`}
+                            className="text-sm text-stone-600 underline underline-offset-2 hover:text-stone-900 font-normal"
+                          >
+                            {member.email}
+                          </a>
+                        )}
                         <a
                           href={member.linkedin}
                           target="_blank"

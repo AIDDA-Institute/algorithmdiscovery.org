@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Calendar, ChevronLeft, Users, BookOpen, Mic } from "lucide-react";
+import { Calendar, ChevronLeft, Users, BookOpen, Mic, Code } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { getUpcomingEvents, getPastEvents, colorMap } from "@/data/events";
 import { EventsGrid } from "@/components/EventsGrid";
@@ -22,6 +22,7 @@ export default function EventsPage() {
     { label: "Reading Group", color: "blue", icon: BookOpen },
     // { label: "Technical Discussion", color: "violet" },
     { label: "Speaker Event", color: "amber", icon: Mic },
+    { label: "Hackathon", color: "rose", icon: Code },
     // { label: "Community Event", color: "rose" },
   ];
 
